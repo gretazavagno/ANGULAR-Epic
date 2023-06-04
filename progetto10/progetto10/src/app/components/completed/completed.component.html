@@ -1,0 +1,30 @@
+<div>
+  <div class="container mt-3">
+    <form>
+      <h1 class="text-center">Completed Tasks List</h1>
+    </form>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+        <table class="table" style="width: 70%;">
+          <thead>
+            <tr class="text-center">
+              <th scope="col">Task</th>
+              <th scope="col">Stato</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let todo of completedTodos" class="text-center"> <!--per ogni todo dell'array completedTodos-->
+
+              <td>{{ todo.title }}</td>
+              <td>Completato</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+</div>

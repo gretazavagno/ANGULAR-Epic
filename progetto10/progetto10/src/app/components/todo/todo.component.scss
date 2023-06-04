@@ -1,0 +1,12 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-message {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+}
