@@ -1,0 +1,18 @@
+<h1>LOG IN</h1>
+
+<div class="container">
+  <form #loginform="ngForm" (ngSubmit)="accedi(loginform)">
+      <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" class="form-control" required ngModel>
+      </div>
+      <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" class="form-control" required ngModel>
+      </div>
+      <button type="submit" class="btn btn-primary mt-3" routerLink="/home" [disabled]="loginform.invalid">Accedi</button>
+  </form>
+</div>
+<div>
+  <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active">Registrati</a>
+</div>
