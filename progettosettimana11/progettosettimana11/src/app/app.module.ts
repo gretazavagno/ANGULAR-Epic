@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms'; //importazione form
 import { Route, RouterModule } from '@angular/router'; //importazione rotte
 import { HttpClientModule } from '@angular/common/http'; //importazione http
+import { AuthGuard } from './auth/auth.guard'; //importazione authGuard
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login/login.component';
@@ -29,15 +30,18 @@ const routes: Route[] = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
   },
   {
     path:'movies',
-    component: MoviesComponent
+    component: MoviesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'profiles',
-    component: ProfilesComponent
+    component: ProfilesComponent,
+    canActivate: [AuthGuard]
   }
 ]
 
