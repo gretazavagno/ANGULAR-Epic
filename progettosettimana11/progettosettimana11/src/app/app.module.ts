@@ -11,13 +11,12 @@ import { RegisterComponent } from './auth/register/register/register.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { ProfilesComponent } from './components/profiles/profiles.component';
-import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Route[] = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'register',
     pathMatch: 'full',
   },
   {
@@ -29,11 +28,6 @@ const routes: Route[] = [
       component: RegisterComponent
   },
   {
-    path: 'home',
-    component: HomeComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path:'movies',
     component: MoviesComponent,
     canActivate: [AuthGuard]
@@ -42,7 +36,17 @@ const routes: Route[] = [
     path: 'profiles',
     component: ProfilesComponent,
     canActivate: [AuthGuard]
-  }
+  },
+  {
+    path: 'navbar',
+    component: NavbarComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profilo',
+    component: ProfilesComponent,
+    canActivate: [AuthGuard]
+  },
 ]
 
 @NgModule({
@@ -53,7 +57,6 @@ const routes: Route[] = [
     NavbarComponent,
     MoviesComponent,
     ProfilesComponent,
-    HomeComponent
   ],
   imports: [
     BrowserModule,

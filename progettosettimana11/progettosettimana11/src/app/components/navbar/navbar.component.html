@@ -1,18 +1,51 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg fixed-top bg-black">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">NETFLIX</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <img
+      src="https://cdn.iconscout.com/icon/free/png-256/free-netflix-282224.png"
+      alt=""
+      srcset=""
+      class=""
+    />
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarScroll"
+      aria-controls="navbarScroll"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="['/movies']">Movies</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" [routerLink]="['/profiles']">Profile</a>
-        </li>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul
+        class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+        style="--bs-scroll-height: 100px"
+      >
+        <li class="nav-item"></li>
+        <li class="nav-item"></li>
+        <li class="nav-item"></li>
       </ul>
+      <form class="d-flex">
+        <div>
+          <h6 *ngIf="user" class="text-secondary">
+            Benvenuto,<a
+              class="nav-link text-danger"
+              [routerLink]="['/profilo']"
+              routerLinkActive="active"
+              >{{ user.user.nome }}</a
+            >
+          </h6>
+        </div>
+        <button
+          type="button"
+          class="btn ms-2 float-end rounded"
+          *ngIf="user"
+          (click)="logout()"
+        >
+          Logout<i class="bi bi-box-arrow-right ms-2"></i>
+        </button>
+      </form>
     </div>
   </div>
 </nav>

@@ -3,7 +3,6 @@ import { NgForm } from '@angular/forms';
 import { AuthService } from '../../auth.service';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -18,12 +17,15 @@ export class LoginComponent implements OnInit {
   }
 
   accedi(form: NgForm) {
+    this.isLoading = true;
     console.log(form.value);
+
     try {
       this.authService.login(form.value).subscribe();
       this.isLoading = false;
       alert('Login effettuato!');
-      this.router.navigate(['/']);
+      this.router.navigate(['/movies']);
+      sessionStorage.setItem('isFirstLoad', 'true');
   } catch (error) {
       this.isLoading = false;
       alert('Login sbagliato!');

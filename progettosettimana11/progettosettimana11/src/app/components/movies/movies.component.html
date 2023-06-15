@@ -1,13 +1,11 @@
 <app-navbar></app-navbar>
-<p>movies works!</p>
-
 <div class="row">
   <div class="col-12">
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let movie of movies">
-        <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="card-img-top" alt="">
+        <img src="http://image.tmdb.org/t/p/w500{{movie.poster_path}}" class="card-img-top" alt="" style="width: 100px; height: auto;">
         <div class="card-body">
-          <p class="card-text">{{movie.id}}</p>
+          <p class="card-text">{{movie.title}}</p>
         </div>
       </li>
     </ul>

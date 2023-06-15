@@ -10,7 +10,7 @@ import { AppService } from 'src/app/service/app.service';
 })
 export class MoviesComponent implements OnInit {
   movies: any[] = [];
-  favorites: any[] = [];
+
   constructor(private appservice: AppService, private authService: AuthService) { }
 
   ngOnInit(): void {

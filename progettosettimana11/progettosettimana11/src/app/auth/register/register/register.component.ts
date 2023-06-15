@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   registrati(form: NgForm) {
     this.isLoading = true;
     console.log(form.value);
