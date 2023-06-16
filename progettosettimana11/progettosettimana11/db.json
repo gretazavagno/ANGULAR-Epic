@@ -29,6 +29,11 @@
       "password": "$2a$10$dUc3jYtuRxxmnln0QZn.ZeJPDfdXmW/QCPKLmVJ31FiOXe1wZoir2",
       "name": "Gabriel",
       "id": 5
+    },
+    {
+      "email": "greta@gmail.com",
+      "password": "$2a$10$9GTt9o/4XWxi3FzPTfmSoehGwz.No9S4YLlQBUI9FFzDz5ajW5Z3a",
+      "id": 6
     }
   ],
   "favorites": [

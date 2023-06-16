@@ -41,12 +41,7 @@ const routes: Route[] = [
     path: 'navbar',
     component: NavbarComponent,
     canActivate: [AuthGuard]
-  },
-  {
-    path: 'profilo',
-    component: ProfilesComponent,
-    canActivate: [AuthGuard]
-  },
+  }
 ]
 
 @NgModule({
