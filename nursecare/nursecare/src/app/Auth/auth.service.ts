@@ -48,12 +48,17 @@ export class AuthService {
     }
   }
 
-  //GET UTENTE
+  //GET UTENTE E MI RESTITUISCE L'UTENTE COLLEGATO
   getUserData() {
     return this.auth.authState.pipe(
       switchMap(user => {
         if (user) {
-          return this.firebase.object(`/users/${user.uid}`).valueChanges();
+          return this.firebase.object(`/users/${user.uid}`).valueChanges().pipe(
+            switchMap(userData => {
+              const userDataWithUid = Object.assign({}, userData, { uid: user.uid });
+              return of(userDataWithUid);
+            })
+          );
         } else {
           return of(null);
         }

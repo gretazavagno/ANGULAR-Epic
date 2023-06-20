@@ -7,52 +7,36 @@
   </div>
 </nav>
 
-<a>COMPLETA IL TUO PROFILO</a>
+<form (ngSubmit)="submit()" #competenzeForm="ngForm">
+  <label for="titolo">Competenza 1:</label>
+  <input type="text" id="titolo" [(ngModel)]="competenze.titolo" name="titolo" required>
 
-<p>INSERIRIMENTO COMPETENZE PER COMPLETARE IL PROFILO</p>
-<form (ngSubmit)="addCompetenza()" >
-  <div>
-    <label for="titolo">Titolo</label>
-    <input type="text" id="titolo" name="titolo" [(ngModel)]="competenza.titolo" required>
-  </div>
-  <div>
-    <label for="descrizione">Descrizione</label>
-    <textarea id="descrizione" name="descrizione" [(ngModel)]="competenza.descrizione" required></textarea>
-  </div>
-  <button type="submit">Aggiungi Esperienza</button>
+  <label for="descrizione">Valore 1:</label>
+  <input type="text" id="descrizione" [(ngModel)]="competenze.descrizione" name="descrizione" required>
+
+  <!-- Ripeti per chiave2, chiave3, ecc. -->
+
+  <button type="submit">Aggiungi competenze</button>
 </form>
 
-
-  <!--STAMPARE LE COMPETENZE-->
-  <!-- <div *ngFor="let competenza of competenze">
-    <h2>{{competenza.titolo}}</h2>
-    <p>{{competenza.descrizione}}</p> -->
-
-    <!--BUTTON PER MODIFICARE COMPETENZA-->
-    <!-- <button *ngIf="modifica != competenza.key" (click)="modifica=competenza.key">Modifica</button> -->
-
-    <!--BUTTON PER ELIMINARE COMPETENZA-->
-    <!-- <button (click)="eliminaCompetenza(competenza.key)">Elimina</button>
-  </div> -->
-
-
-<div *ngFor="let competenza of competenze">
-  <h2>{{competenza.titolo}}</h2>
-  <p>{{competenza.descrizione}}</p>
+<div *ngFor="let item of users.competenze">
+  <h2>{{item.titolo}}</h2>
+  <p>{{item.descrizione}}</p>
 
 
   <!-- QUESTO APPARE SOLO IN MODALITÀ MODIFICA! -->
-  <div *ngIf="modifica===competenza.key">
+  <!-- <div *ngIf="modifica===competenza.key">
     <input [(ngModel)]="competenza.titolo">
     <br>
     <input [(ngModel)]="competenza.descrizione">
     <br>
     <button (click)="modificaCompetenza(competenza.key, competenza); modifica=null">Salva modifica</button>
-  </div>
+  </div> -->
 
   <!-- BUTTON ELIMINARE COMPETENZA -->
-  <button (click)="eliminaCompetenza(competenza.key)">Elimina</button>
+  <!-- <button (click)="eliminaCompetenza(competenza.key)">Elimina</button> -->
 
   <!-- BUTTON ELIMINARE COMPETENZA -->
-  <button *ngIf="modifica != competenza.key" (click)="modifica=competenza.key">Modifica</button>
+  <!-- <button *ngIf="modifica != competenza.key" (click)="modifica=competenza.key">Modifica</button> -->
 </div>
+

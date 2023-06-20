@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Auth/auth.service';
 import { AngularFireDatabase} from '@angular/fire/compat/database';
-import { Competenze } from 'src/app/models/competenze.interface';
 
 @Component({
   selector: 'app-profilo-personale',
@@ -9,77 +8,74 @@ import { Competenze } from 'src/app/models/competenze.interface';
   styleUrls: ['./profilo-personale.component.scss']
 })
 export class ProfiloPersonaleComponent implements OnInit {
+
   user: any;
-  competenze!: any[];
-  modifica: string | null = null;
+  users: any;
 
-  constructor(private authSrv: AuthService, private firedatabase: AngularFireDatabase) { }
-
-  competenza = {
+  competenze  = {
     titolo: '',
     descrizione: '',
     key: '',
-  }
+  };
+
+
+  constructor(private authSrv: AuthService, private firedatabase: AngularFireDatabase) { }
+
+  // competenza = {
+  //   titolo: '',
+  //   descrizione: '',
+  //   key: '',
+  // }
 
   ngOnInit(): void {
 
     this.authSrv.getUserData().subscribe(data => {
       this.user = data;
-
+      console.log(data)
     })
-
-    this.firedatabase
-      .list('competenze')
-      .valueChanges()
-      .subscribe((data) => {
-        this.competenze = data;
-      });
   }
 
-  addCompetenza():void {
-    const ref = this.firedatabase.list('competenze').push(this.competenza);
+  //AGGIUNGERE LE COMPETENZE COLLEGATE ALL'UTENTE
+
+  submit(): void {
+    // Verifica che l'utente sia autenticato
+    if (!this.user) {
+      console.error('Devi essere autenticato per aggiungere competenze');
+      return;
+    }
+
+    // Aggiungi l'oggetto competenze all'utente
+    const ref = this.firedatabase.list(`/users/${this.user.uid}/competenze`).push(this.competenze);
+
+    this.firedatabase.object(`/users/${this.user.uid}/competenze`).update(ref) //this.competenze al posto di ref
+
     ref.then((item) => {
+      console.log('Competenze aggiunte con successo');
+      console.log(this.user.uid)
+
       if(item.key!==null){
         //Aggiungi la chiave all'oggetto
-        this.competenza.key = item.key;
+        this.competenze.key = item.key;
         //Aggiorna l'oggetto nel db con la nuova chiave
-        item.update(this.competenza).then(()=>{
-          console.log('competenza aggiunta con successo', this.competenza);
-          this.resetForm();
+        item.update(this.users.competenze).then(()=>{
+          console.log('competenza aggiunta con successo', this.competenze);
         })
       }
-    })
-    .catch((error) => {
-      console.log('competenza non aggiunta', error);
-    })
-  }
 
-  //RESETTARE FORM DOPO INVIO
-  resetForm(): void {
-    this.competenza = {
-      titolo: '',
-      descrizione: '',
-      key: '',
-    }
-  }
+      // Resetta le competenze
+      this.competenze = {
+        titolo: '',
+        descrizione: '',
+        key: '',
+      };
+    })
 
-  // METODO MODIFICA ESPERIENZA
-  modificaCompetenza(key: string, competenzaModificata: Competenze) {
-    return this.firedatabase
-      .object(`competenze/${key}`)
-      .update(competenzaModificata)
-      .then(() => {
-        console.log('competenza modificata con successo', competenzaModificata);
-      })
       .catch((error) => {
-        console.error('competenza non modificata con successo', error);
+        console.error('Errore durante l aggiunta delle competenze:', error);
       });
-  }
+    }
 
-  //ELIMINARE COMPETENZA
-  eliminaCompetenza(key: string) {
-    return this.firedatabase.object(`competenze/${key}`).remove();
-  }
+
 
 }
 
