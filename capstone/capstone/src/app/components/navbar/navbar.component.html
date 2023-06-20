@@ -1,0 +1,21 @@
+
+
+<nav class="navbar bg-body-tertiary p-0 mb-5">
+  <div class="container-fluid ncc-navbar">
+    <div class="row align-items-center">
+      <div class="col-6">
+        <a class="navbar-brand">
+          <img [src]="imagePath" alt="Logo" class="d-inline-block align-text-top" style="width: 100%;">
+        </a>
+      </div>
+      <div class="col-6 text-end mb-1 mt-1 align-items-center">
+        <form class="form" #form="ngForm" (ngSubmit)="vaiLogIn(form)">
+          <button class="btn btn-custom-login" type="submit">Log In</button>
+        </form>
+        <button class="btn btn-custom-join" type="submit">Join In</button>
+      </div>
+    </div>
+  </div>
+</nav>
+<app-search></app-search>
+

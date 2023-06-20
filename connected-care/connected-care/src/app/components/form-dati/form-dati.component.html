@@ -1,0 +1,20 @@
+<p>form-dati works!</p>
+
+<form (ngSubmit)="addCompetenza()">
+  <div>
+    <label for="titolo">Titolo</label>
+    <input type="text" id="titolo" name="titolo" [(ngModel)]="competenza.titolo" required>
+  </div>
+  <div>
+    <label for="descrizione">Descrizione</label>
+    <textarea id="descrizione" name="descrizione" [(ngModel)]="competenza.descrizione" required></textarea>
+  </div>
+  <button type="submit">Aggiungi Competenza</button>
+</form>
+
+<!--VEDERE A SCHERMO LE COMPETENZE INSERITE-->
+<div *ngFor="let competenza of competenze">
+  <h3>{{competenza.titolo}}</h3>
+  <p>{{competenza.descrizione}}</p>
+</div>
+

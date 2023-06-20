@@ -1,0 +1,23 @@
+.ncc-navbar{
+  background-color: #755e9c;
+}
+
+.btn-custom-join{
+  background-color: #755e9c;
+  color: #ffacac;
+  font-weight: 700;
+  font-size: 100%;
+  border: 2px solid #ffacac;
+  border-radius: 20px;
+  padding: 1% 9%;
+  transition: background-color 1s ease;
+  transition: color 1s ease;
+
+}
+
+.btn-custom-join:hover{
+  background-color: #ffacac;
+  color: #755e9c;
+}
+
+

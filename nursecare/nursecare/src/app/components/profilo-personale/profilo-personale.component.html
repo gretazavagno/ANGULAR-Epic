@@ -1,0 +1,58 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand">BENVENUTO {{user.nome}} {{user.cognome}}!</a> <!--Aggiungere nome dell'utente-->
+    <div class="d-flex">
+      <a [routerLink]="['/home']" routerLinkActive="active"><i class="bi bi-box-arrow-right"></i></a>
+    </div>
+  </div>
+</nav>
+
+<a>COMPLETA IL TUO PROFILO</a>
+
+<p>INSERIRIMENTO COMPETENZE PER COMPLETARE IL PROFILO</p>
+<form (ngSubmit)="addCompetenza()" >
+  <div>
+    <label for="titolo">Titolo</label>
+    <input type="text" id="titolo" name="titolo" [(ngModel)]="competenza.titolo" required>
+  </div>
+  <div>
+    <label for="descrizione">Descrizione</label>
+    <textarea id="descrizione" name="descrizione" [(ngModel)]="competenza.descrizione" required></textarea>
+  </div>
+  <button type="submit">Aggiungi Esperienza</button>
+</form>
+
+
+  <!--STAMPARE LE COMPETENZE-->
+  <!-- <div *ngFor="let competenza of competenze">
+    <h2>{{competenza.titolo}}</h2>
+    <p>{{competenza.descrizione}}</p> -->
+
+    <!--BUTTON PER MODIFICARE COMPETENZA-->
+    <!-- <button *ngIf="modifica != competenza.key" (click)="modifica=competenza.key">Modifica</button> -->
+
+    <!--BUTTON PER ELIMINARE COMPETENZA-->
+    <!-- <button (click)="eliminaCompetenza(competenza.key)">Elimina</button>
+  </div> -->
+
+
+<div *ngFor="let competenza of competenze">
+  <h2>{{competenza.titolo}}</h2>
+  <p>{{competenza.descrizione}}</p>
+
+
+  <!-- QUESTO APPARE SOLO IN MODALITÀ MODIFICA! -->
+  <div *ngIf="modifica===competenza.key">
+    <input [(ngModel)]="competenza.titolo">
+    <br>
+    <input [(ngModel)]="competenza.descrizione">
+    <br>
+    <button (click)="modificaCompetenza(competenza.key, competenza); modifica=null">Salva modifica</button>
+  </div>
+
+  <!-- BUTTON ELIMINARE COMPETENZA -->
+  <button (click)="eliminaCompetenza(competenza.key)">Elimina</button>
+
+  <!-- BUTTON ELIMINARE COMPETENZA -->
+  <button *ngIf="modifica != competenza.key" (click)="modifica=competenza.key">Modifica</button>
+</div>
