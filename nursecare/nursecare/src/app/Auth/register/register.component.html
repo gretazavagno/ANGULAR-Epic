@@ -29,6 +29,60 @@
           [(ngModel)]="cognome"
           id="cognome"
         />
+        <input
+        type="text"
+        class="form-control"
+        name="dataNascita"
+        placeholder="Data di nascita"
+        required
+        [(ngModel)]="dataNascita"
+        id="dataNascita"
+      />
+        <input
+          type="text"
+          class="form-control"
+          name="indirizzo"
+          placeholder="Indirizzo"
+          required
+          [(ngModel)]="indirizzo"
+          id="indirizzo"
+        />
+        <input
+          type="text"
+          class="form-control"
+          name="zipCode"
+          placeholder="Zip Code"
+          required
+          [(ngModel)]="zipCode"
+          id="zipCode"
+        />
+        <input
+          type="text"
+          class="form-control"
+          name="citta"
+          placeholder="Città"
+          required
+          [(ngModel)]="citta"
+          id="citta"
+        />
+        <input
+        type="text"
+        class="form-control"
+        name="professione"
+        placeholder="Professione"
+        required
+        [(ngModel)]="professione"
+        id="professione"
+      />
+      <input
+      type="text"
+      class="form-control"
+      name="nAlbo"
+      placeholder="Numero iscrizione all'albo"
+      required
+      [(ngModel)]="nAlbo"
+      id="nAlbo"
+    />
 
         <input
           type="email"
@@ -67,13 +121,13 @@
     <div class="form-section">
       <p class="text-secondary">
         Hai già un account?
-        <!-- <a
+        <a
           class="nav-link regisrati"
           style="color: #e50914"
           [routerLink]="['/login']"
           routerLinkActive="active"
           >Accedi</a
-        > -->
+        >
       </p>
     </div>
   </div>

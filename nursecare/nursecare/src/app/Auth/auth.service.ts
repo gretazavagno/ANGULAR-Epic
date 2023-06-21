@@ -8,16 +8,19 @@ import { switchMap, of } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  list(arg0: string) {
+    throw new Error('Method not implemented.');
+  }
   user$: any;
 
   constructor(private auth: AngularFireAuth, private firebase: AngularFireDatabase) { }
 
   //REGISTRAZIONE DELL'UTENTE
-  async register(email: string, password: string, nome: string, cognome: string) {
+  async register(email: string, password: string, nome: string, cognome: string, dataNascita: string, indirizzo: string, citta: string, zipCode: string, professione: string, nAlbo: string) {
     try {
       const user = await this.auth.createUserWithEmailAndPassword(email, password);
       if(user.user){
-        await this.firebase.object(`users/${user.user.uid}`).set({nome: nome, cognome: cognome, email: email});
+        await this.firebase.object(`users/${user.user.uid}`).set({nome: nome, cognome: cognome, dataNascita: dataNascita, email: email, indirizzo: indirizzo, citta: citta, zipCode: zipCode, professione: professione, nAlbo: nAlbo});
         console.log('avvenuta registrazione', user.user);
       }
     }

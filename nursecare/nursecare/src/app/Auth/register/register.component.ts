@@ -13,6 +13,12 @@ export class RegisterComponent implements OnInit {
   password = '';
   nome = '';
   cognome = '';
+  dataNascita='';
+  indirizzo = '';
+  zipCode='';
+  citta = '';
+  professione = '';
+  nAlbo = '';
 
   constructor(private authSrv: AuthService, private router: Router) { }
 
@@ -20,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registra(){
-    this.authSrv.register(this.email, this.password, this.nome, this.cognome)
+    this.authSrv.register(this.email, this.password, this.nome, this.cognome,this.dataNascita, this.indirizzo, this.zipCode, this.citta, this.professione, this.nAlbo)
     .then(()=>{
       console.log('utente registrato com sucesso');
       this.router.navigate(['/login']); //Appena invio va su login

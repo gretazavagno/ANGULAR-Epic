@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Auth/auth.service';
-import { AngularFireDatabase} from '@angular/fire/compat/database';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Competenze } from 'src/app/models/competenze.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profilo-personale',
@@ -10,80 +12,98 @@ import { AngularFireDatabase} from '@angular/fire/compat/database';
 export class ProfiloPersonaleComponent implements OnInit {
 
   user: any;
-  users: any;
+  users: any = {};
 
-  competenze  = {
+  competenze = {
     titolo: '',
     descrizione: '',
     key: '',
   };
 
+  competenzaInModifica: any = null; // Rappresenta la competenza attualmente in fase di modifica
 
-  constructor(private authSrv: AuthService, private firedatabase: AngularFireDatabase) { }
-
-  // competenza = {
-  //   titolo: '',
-  //   descrizione: '',
-  //   key: '',
-  // }
+  constructor(private authSrv: AuthService, private firedatabase: AngularFireDatabase, private router: Router) { }
 
   ngOnInit(): void {
-
     this.authSrv.getUserData().subscribe(data => {
       this.user = data;
-      console.log(data)
-    })
+      console.log(data);
+      this.loadCompetenze();
+    });
   }
 
-  //AGGIUNGERE LE COMPETENZE COLLEGATE ALL'UTENTE
+  loadCompetenze(): void {
+    this.firedatabase
+      .list(`/users/${this.user?.uid}/competenze`)
+      .valueChanges()
+      .subscribe((competenze: any) => {
+        this.users.competenze = competenze;
+      });
+  }
 
   submit(): void {
-    // Verifica che l'utente sia autenticato
     if (!this.user) {
       console.error('Devi essere autenticato per aggiungere competenze');
       return;
     }
 
-    // Aggiungi l'oggetto competenze all'utente
     const ref = this.firedatabase.list(`/users/${this.user.uid}/competenze`).push(this.competenze);
-
-    this.firedatabase.object(`/users/${this.user.uid}/competenze`).update(ref) //this.competenze al posto di ref
 
     ref.then((item) => {
       console.log('Competenze aggiunte con successo');
-      console.log(this.user.uid)
+      console.log(this.user.uid);
 
-      if(item.key!==null){
-        //Aggiungi la chiave all'oggetto
+      if (item.key !== null) {
         this.competenze.key = item.key;
-        //Aggiorna l'oggetto nel db con la nuova chiave
-        item.update(this.users.competenze).then(()=>{
-          console.log('competenza aggiunta con successo', this.competenze);
-        })
+
+        this.firedatabase.object(`/users/${this.user.uid}/competenze/${item.key}`).update(this.competenze)
+          .then(() => {
+            console.log('Competenza aggiunta con successo', this.competenze);
+          })
+          .catch((error) => {
+            console.error('Errore durante l aggiunta delle competenze:', error);
+          });
       }
 
-      // Resetta le competenze
       this.competenze = {
         titolo: '',
         descrizione: '',
         key: '',
       };
+    });
+  }
+
+
+ // METODO MODIFICA COMPETENZA
+
+ modifica: string | null = null;
+
+ modificaCompetenza(key: string, competenzaModificata: Competenze) {
+  return this.firedatabase
+    .object(`/users/${this.user.uid}/competenze/${key}`)
+    .update(competenzaModificata)
+    .then(() => {
+      console.log('competenza modificata con successo', competenzaModificata);
     })
-
-      .catch((error) => {
-        console.error('Errore durante l aggiunta delle competenze:', error);
-      });
-    }
-
-
-
+    .catch((error) => {
+      console.error('competenza non modificata con successo', error);
+    });
 }
 
+// METODO ELIMINA COMPETENZA
+  eliminaCompetenza(key: string): void {
+    this.firedatabase.object(`/users/${this.user.uid}/competenze/${key}`).remove()
+      .then(() => {
+        console.log('Competenza eliminata con successo');
+      })
+      .catch((error) => {
+        console.error('Errore durante l eliminazione della competenza:', error);
+      });
+  }
 
 
-
-
-
-
-
-
+  //INVIARE LE COMPETENZE AGGIUNTE AL COMPONENTE DETTAGLI
+  visualizzaDettagliCompetenze(): void {
+    this.router.navigate(['/dettagli-profilo'], { queryParams: { competenze: JSON.stringify(this.users.competenze) } });
+  }
+}

@@ -1,0 +1,46 @@
+<nav class="navbar bg-body-tertiary p-0 mb-5">
+  <div class="container-fluid ncc-navbar">
+    <a class="navbar-brand">BENVENUTO {{user.nome}} {{user.cognome}}!</a> <!--Aggiungere nome dell'utente-->
+    <div class="d-flex ">
+      <div class="container mr-5">
+        <a [routerLink]="['/dettagli-profilo']" routerLinkActive="active" class="link" >Dettagli</a>
+      </div>
+      <div class="container mr-5">
+        <a [routerLink]="['/home']" routerLinkActive="active" class="link"><i class="bi bi-box-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="dati-anagrafici bg-dark text-light">
+  <h2>I tuoi dati anagrafici</h2>
+  <p>Nome: {{user.nome}}</p>
+  <p>Cognome: {{user.cognome}} </p>
+  <p>Data di nascita: {{ user.dataNascita }}</p>
+  <p>Indirizzo di residenza: {{user.indirizzo}}, {{user.zipCode}}, {{user.citta}}</p>
+</div>
+<hr>
+<div class="professione bg-dark text-light">
+  <h2>Profilo Professionale</h2>
+  <p>Professione: {{user.professione}}</p>
+  <p>Numero di iscrizione all'albo: {{user.nAlbo}}</p>
+  <p>Anni di esperienza: </p> <!--Aggiungere anni di esperienza, un form tipo-->
+</div>
+<button class="btn btn-custom-join" type="submit" (click)="vaiAggiungiSkills()">Aggiungi Skills</button>
+
+
+<table class="table mb-4">
+  <thead>
+    <tr>
+      <th scope="col">Skills</th>
+      <th scope="col">Descrizione</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let competenza of competenze">
+      <td> {{ competenza.titolo }}</td>
+      <td>{{ competenza.descrizione }}</td>
+    </tr>
+  </tbody>
+</table>
+

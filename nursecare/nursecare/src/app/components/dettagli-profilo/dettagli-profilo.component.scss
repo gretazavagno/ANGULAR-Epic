@@ -1,3 +1,19 @@
+
+.ncc-navbar.ncc-navbar{
+  background-color: #755e9c;
+}
+
+.link {
+  outline: none;
+  color: #ffacac;
+  font-size: x-large;
+  text-decoration: none;
+}
+
+tr {
+  color: black;
+}
+
 .sfondo{
 
   // background-image: url(https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg) !important;
@@ -8,12 +24,14 @@
 }
 
 .form-box {
-  max-width: 300px;
+  width: 80%;
   background: #f1f7fe;
   overflow: hidden;
   border-radius: 16px;
   color: #010101;
-    background-color: rgba(0, 0, 0, 0.8);  //trasparenza card
+    background-color:#b1a4c8;  //trasparenza card
+
+
 }
 
 .form {
@@ -78,7 +96,7 @@
 
 /*Button*/
 .form button {
-  background-color:  #E50914;;
+  background-color:  #ffacac;;
   color: #fff;
   border: 0;
   border-radius: 24px;
@@ -90,7 +108,7 @@
 }
 
 .form button:hover {
-  background-color: #b30a13;;
+  background-color: #fa9a9a;;
 }
 
 .registrati{
@@ -98,6 +116,25 @@
 }
 
 img{
-  height: 100%;
+  max-height: 100%;
   width: 100%; /* Regola la larghezza massima desiderata dell'immagine */
+}
+
+
+.btn-custom-join{
+  background-color: #755e9c;
+  color: #ffacac;
+  font-weight: 700;
+  font-size: 100%;
+  border: 2px solid #ffacac;
+  border-radius: 20px;
+  padding: 1% 9%;
+  transition: background-color 1s ease;
+  transition: color 1s ease;
+
+}
+
+.btn-custom-join:hover{
+  background-color: #ffacac;
+  color: #755e9c;
 }

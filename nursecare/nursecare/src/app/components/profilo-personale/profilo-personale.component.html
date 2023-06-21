@@ -1,42 +1,95 @@
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
+<nav class="navbar bg-body-tertiary p-0 mb-5">
+  <div class="container-fluid ncc-navbar">
     <a class="navbar-brand">BENVENUTO {{user.nome}} {{user.cognome}}!</a> <!--Aggiungere nome dell'utente-->
-    <div class="d-flex">
-      <a [routerLink]="['/home']" routerLinkActive="active"><i class="bi bi-box-arrow-right"></i></a>
+    <div class="d-flex ">
+      <div class="container mr-5">
+        <a [routerLink]="['/dettagli-profilo']" routerLinkActive="active" >Dettagli</a>
+      </div>
+      <div class="container mr-5">
+        <a [routerLink]="['/home']" routerLinkActive="active" class="link"><i class="bi bi-box-arrow-right"></i></a>
+      </div>
     </div>
   </div>
 </nav>
 
-<form (ngSubmit)="submit()" #competenzeForm="ngForm">
-  <label for="titolo">Competenza 1:</label>
-  <input type="text" id="titolo" [(ngModel)]="competenze.titolo" name="titolo" required>
 
-  <label for="descrizione">Valore 1:</label>
-  <input type="text" id="descrizione" [(ngModel)]="competenze.descrizione" name="descrizione" required>
+<div class="sfondo d-flex align-items-center">
+  <div class="form-box m-auto">
+    <form class="form" (ngSubmit)="submit()" #competenzeForm="ngForm">
+      <img src="assets/img/NCC_logo.png" alt="" srcset="" class="m-auto"/>
 
-  <!-- Ripeti per chiave2, chiave3, ecc. -->
+      <span class="subtitle text-white">Aggiungi le tue competenze</span>
 
-  <button type="submit">Aggiungi competenze</button>
-</form>
+      <div class="form-container">
 
-<div *ngFor="let item of users.competenze">
-  <h2>{{item.titolo}}</h2>
-  <p>{{item.descrizione}}</p>
+        <input
+          type="text"
+          class="form-control"
+          name="titolo"
+          placeholder="aggiungi una skill"
+          required
+          [(ngModel)]="competenze.titolo"
+          id="titolo"
+        />
 
+        <input
+          type="email"
+          name="descrizione"
+          id="descrizione"
+          class="form-control"
+          placeholder="Descrizione: aggiungi dettagli"
+          required
+          [(ngModel)]="competenze.descrizione"
+        />
 
-  <!-- QUESTO APPARE SOLO IN MODALITÀ MODIFICA! -->
-  <!-- <div *ngIf="modifica===competenza.key">
-    <input [(ngModel)]="competenza.titolo">
-    <br>
-    <input [(ngModel)]="competenza.descrizione">
-    <br>
-    <button (click)="modificaCompetenza(competenza.key, competenza); modifica=null">Salva modifica</button>
-  </div> -->
+      </div>
+      <button type="submit">Aggiungi skill</button>
 
-  <!-- BUTTON ELIMINARE COMPETENZA -->
-  <!-- <button (click)="eliminaCompetenza(competenza.key)">Elimina</button> -->
-
-  <!-- BUTTON ELIMINARE COMPETENZA -->
-  <!-- <button *ngIf="modifica != competenza.key" (click)="modifica=competenza.key">Modifica</button> -->
+    </form>
+  </div>
 </div>
+
+<!--TABELLA IN CUI VENGONO INSERITI I TASK----->
+
+
+<table class="table mb-4">
+  <thead>
+    <tr>
+      <th scope="col">Skills</th>
+      <th scope="col">Descrizione</th>
+      <th scope="col">Azioni</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let competenza of users.competenze">
+      <td>
+        <ng-container *ngIf="modifica !== competenza.key; else modificaSection">
+         {{ competenza.titolo }}
+        </ng-container>
+        <ng-template #modificaSection>
+          <input [(ngModel)]="competenza.titolo">
+          <button (click)="modificaCompetenza(competenza.key, competenza); modifica=null">Salva modifica</button>
+        </ng-template>
+      </td>
+      <td>
+        <ng-container *ngIf="modifica !== competenza.key; else modificaDescrizione">
+          {{ competenza.descrizione }}
+        </ng-container>
+        <ng-template #modificaDescrizione>
+          <input [(ngModel)]="competenza.descrizione">
+          <button (click)="modificaCompetenza(competenza.key, competenza); modifica=null">Salva modifica</button>
+        </ng-template>
+      </td>
+
+      <td class="d-flex justify-content-evenly">
+        <button class="btn btn-success mb-1 mx-1 rounded-pill" (click)="modifica = competenza.key" data-toggle="tooltip">Modifica</button>
+        <button class="btn btn-danger mb-1 mx-1 rounded-pill" (click)="eliminaCompetenza(competenza.key)"  data-toggle="tooltip" title="ELIMINA Task">  <i class="bi bi-trash px-2"></i>Elimina</button>
+      </td>
+
+    </tr>
+  </tbody>
+</table>
+
+<!--BUTTON PER INVIARE I DATI-->
+<button [routerLink]="['/dettagli-profilo']" [queryParams]="{ competenze: users.competenze }" routerLinkActive="active">Visualizza dettagli</button>
 
