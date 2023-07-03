@@ -1,0 +1,12 @@
+<p>profilo-cercato works!</p>
+<h2>Dettagli Utente</h2>
+
+<div *ngIf="user">
+  <div><strong>Nome:</strong> {{ user.nome }}</div>
+  <div><strong>Cognome:</strong> {{ user.cognome }}</div>
+  <div><strong>Email:</strong> {{ user.email }}</div>
+  <div><strong>Indirizzo:</strong> {{ user.indirizzo }}</div>
+  <!-- Aggiungi altri campi a seconda delle tue esigenze -->
+</div>
+
+<button (click)="tornaIndietro()">Torna Indietro</button>

@@ -9,8 +9,6 @@
   text-decoration: none;
 }
 
-
-
 .sfondo{
 
   // background-image: url(https://cdn.mos.cms.futurecdn.net/rDJegQJaCyGaYysj2g5XWY.jpg) !important;
@@ -21,14 +19,12 @@
 }
 
 .form-box {
-  width: 80%;
+  width: 50%;
   background: #f1f7fe;
   overflow: hidden;
   border-radius: 16px;
   color: #010101;
     background-color:#b1a4c8;  //trasparenza card
-
-
 }
 
 .form {
@@ -112,7 +108,7 @@
   color: #E50914 !important;
 }
 
-img{
-  max-height: 100%;
-  width: 100%; /* Regola la larghezza massima desiderata dell'immagine */
-}
+// img{
+//   max-height: 2%;
+//   width: 50%; /* Regola la larghezza massima desiderata dell'immagine */
+// }

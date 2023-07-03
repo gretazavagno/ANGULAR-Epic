@@ -1,15 +1,9 @@
 <app-home></app-home>
-<div class="sfondo d-flex align-items-center">
-  <div class="form-box  m-auto">
+<div class="sfondo d-flex align-items-center m-0 p-0">
+  <div class="form-box m-auto">
     <form class="form">
-      <img
-      src="assets/img/NCC_logo.png"
-      alt=""
-      srcset=""
-      class="m-auto"
-    />
       <span class="subtitle text-white"
-        >Accedi con la tua mail e password.</span
+        >Accedi</span
       >
       <div class="form-container">
         <input
@@ -35,6 +29,16 @@
       <button type="submit" (click)="accedi()">Accedi</button>
     </form>
     <div class="form-section">
+      <p class="text-secondary">
+        Non hai un account?
+        <a
+          class="nav-link regisrati"
+          style="color: #e50914"
+          [routerLink]="['/register']"
+          routerLinkActive="active"
+          >Registrati</a
+        >
+      </p>
     </div>
   </div>
 </div>

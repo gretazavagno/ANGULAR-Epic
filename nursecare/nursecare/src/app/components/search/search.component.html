@@ -1,0 +1,22 @@
+<h2>Ricerca Utenti</h2>
+<input type="text" [(ngModel)]="searchValue" placeholder="Inserisci il valore di ricerca">
+<button (click)="cerca()">Cerca</button>
+
+<div *ngIf="users.length > 0">
+  <h3>Risultati:</h3>
+  <ul>
+    <li *ngFor="let user of users">
+      <div>{{ user.nome }} {{ user.cognome }}</div>
+      <div>Indirizzo: {{ user.indirizzo }}</div>
+      <div>zipCode: {{ user.zipCode }}</div>
+      <div>Città: {{user.citta}}</div>
+      <div>Data di nascita: {{user.dataNascita}}</div>
+      <div>Professione: {{user.professione}}</div>
+      <div>Numero di iscrizione all'albo: {{user.nAlbo}}</div>
+      <!--AGGIUNGERE UN BUTTON PER OGNI PROFILO PER ENTRARE NELLA PAGINA DEI PROFILO CERCATO E PRENOTARE LA PRESTAZIONE-->
+      <button (click)="visualizzaDettagli(user.uid)">Visualizza Dettagli</button>
+    </li>
+  </ul>
+</div>
+
+

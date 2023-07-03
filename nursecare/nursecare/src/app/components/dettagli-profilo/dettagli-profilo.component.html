@@ -26,10 +26,9 @@
   <p>Numero di iscrizione all'albo: {{user.nAlbo}}</p>
   <p>Anni di esperienza: </p> <!--Aggiungere anni di esperienza, un form tipo-->
 </div>
-<button class="btn btn-custom-join" type="submit" (click)="vaiAggiungiSkills()">Aggiungi Skills</button>
 
 
-<table class="table mb-4">
+<!-- <table class="table mb-4">
   <thead>
     <tr>
       <th scope="col">Skills</th>
@@ -38,9 +37,27 @@
   </thead>
   <tbody>
     <tr *ngFor="let competenza of competenze">
-      <td> {{ competenza.titolo }}</td>
+      <td> {{ competenza.key.titolo }}</td>
+      <td>{{ competenza.key.descrizione }}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+<h2>Competenze</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Titolo</th>
+      <th>Descrizione</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let competenza of competenze">
+      <td>{{ competenza.titolo }}</td>
       <td>{{ competenza.descrizione }}</td>
     </tr>
   </tbody>
 </table>
 
+
+<button class="btn btn-custom-join" type="submit" (click)="vaiAggiungiSkills()">Aggiungi Skills</button>

@@ -1,17 +1,21 @@
-<nav class="navbar bg-body-tertiary p-0 mb-5">
+<nav class="navbar bg-body-tertiary p-0 mb-0">
   <div class="container-fluid ncc-navbar">
     <div class="row align-items-center">
       <div class="col-6">
-        <a class="navbar-brand" [routerLink]="['/']" routerLinkActive="active">
-          <img [src]="imagePath" alt="Logo" class="d-inline-block align-text-top" style="width: 100%;">
+        <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active">
+          <img src="assets/img/NCC_logo.png" alt="Logo" class="d-inline-block align-text-top logo">
         </a>
       </div>
       <div class="col-6 text-end mb-1 mt-1 align-items-center">
         <form class="form">
-          <button class="btn btn-custom-login" type="submit" (click)="vaiLogIn()">Log In</button>
+          <button class="btn btn-custom-join" type="submit" (click)="vaiLogIn()">Log In</button>
           <button class="btn btn-custom-join" type="submit" (click)="vaiRegister()">Join In</button>
         </form>
       </div>
     </div>
   </div>
 </nav>
+<app-search></app-search>
+
+
+

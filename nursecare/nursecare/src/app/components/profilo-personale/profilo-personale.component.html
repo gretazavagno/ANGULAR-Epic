@@ -16,7 +16,7 @@
 <div class="sfondo d-flex align-items-center">
   <div class="form-box m-auto">
     <form class="form" (ngSubmit)="submit()" #competenzeForm="ngForm">
-      <img src="assets/img/NCC_logo.png" alt="" srcset="" class="m-auto"/>
+      <!-- <img src="assets/img/NCC_logo.png" alt="" srcset="" class="m-auto"/> -->
 
       <span class="subtitle text-white">Aggiungi le tue competenze</span>
 
@@ -90,6 +90,10 @@
   </tbody>
 </table>
 
+<div *ngIf="competenzeAggiunte">
+  <p>Competenze aggiunte con successo!</p>
+  <p>Verrai reindirizzato alla pagina di dettaglio del profilo.</p>
+</div>
+
 <!--BUTTON PER INVIARE I DATI-->
 <button [routerLink]="['/dettagli-profilo']" [queryParams]="{ competenze: users.competenze }" routerLinkActive="active">Visualizza dettagli</button>
-

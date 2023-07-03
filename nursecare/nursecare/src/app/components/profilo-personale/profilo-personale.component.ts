@@ -3,6 +3,7 @@ import { AuthService } from 'src/app/Auth/auth.service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Competenze } from 'src/app/models/competenze.interface';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profilo-personale',
@@ -19,10 +20,10 @@ export class ProfiloPersonaleComponent implements OnInit {
     descrizione: '',
     key: '',
   };
-
+  competenzeAggiunte = false;
   competenzaInModifica: any = null; // Rappresenta la competenza attualmente in fase di modifica
 
-  constructor(private authSrv: AuthService, private firedatabase: AngularFireDatabase, private router: Router) { }
+  constructor(private authSrv: AuthService, private firedatabase: AngularFireDatabase, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.authSrv.getUserData().subscribe(data => {
@@ -30,6 +31,7 @@ export class ProfiloPersonaleComponent implements OnInit {
       console.log(data);
       this.loadCompetenze();
     });
+
   }
 
   loadCompetenze(): void {

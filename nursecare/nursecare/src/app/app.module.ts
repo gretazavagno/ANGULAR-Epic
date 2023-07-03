@@ -12,6 +12,8 @@ import { environment } from 'src/environments/environment';
 import { ProfiloPersonaleComponent } from './components/profilo-personale/profilo-personale.component';
 import { HomeComponent } from './components/home/home.component';
 import { DettagliProfiloComponent } from './components/dettagli-profilo/dettagli-profilo.component';
+import { SearchComponent } from './components/search/search.component';
+import { ProfiloCercatoComponent } from './components/profilo-cercato/profilo-cercato.component';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
@@ -49,6 +51,14 @@ const routes: Route[] = [
   {
     path: 'dettagli-profilo',
     component: DettagliProfiloComponent,
+  },
+  {
+    path: 'profilo-cercato',
+    component: ProfiloCercatoComponent
+  },
+  {
+    path: 'search',
+    component: SearchComponent
   }
   // {
   //   path: 'navbar',
@@ -64,7 +74,9 @@ const routes: Route[] = [
     LoginComponent,
     ProfiloPersonaleComponent,
     HomeComponent,
-    DettagliProfiloComponent
+    DettagliProfiloComponent,
+    SearchComponent,
+    ProfiloCercatoComponent,
   ],
   imports: [
     BrowserModule,

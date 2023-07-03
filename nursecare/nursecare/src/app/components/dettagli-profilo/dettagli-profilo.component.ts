@@ -29,14 +29,13 @@ export class DettagliProfiloComponent implements OnInit {
       .list(`/users/${this.user?.uid}/competenze`)
       .valueChanges()
       .subscribe((competenze: any) => {
-        this.users.competenze = competenze;
+        this.competenze = competenze;
       });
   }
 
   vaiAggiungiSkills(){
-    this.router.navigate(['/profilo-personale']);
+    this.router.navigate(['/profilo-personale'], { queryParams: { competenzeAggiunte: 'true' } });
   }
 }
-
 
 
