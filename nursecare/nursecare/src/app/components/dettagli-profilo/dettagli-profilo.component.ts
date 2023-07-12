@@ -36,6 +36,9 @@ export class DettagliProfiloComponent implements OnInit {
   vaiAggiungiSkills(){
     this.router.navigate(['/profilo-personale'], { queryParams: { competenzeAggiunte: 'true' } });
   }
+
+
+
 }
 
 

@@ -11,7 +11,7 @@
       <tr>
         <th scope="col">Nome</th>
         <th scope="col">Descrizione</th>
-        <!-- <th scope="col">Competenze</th> -->
+        <th scope="col">Competenze</th>
         <th scope="col">Contatti</th>
       </tr>
     </thead>
@@ -28,12 +28,12 @@
           <div>Professione: {{user.professione}}</div>
           <div>Numero di iscrizione all'albo: {{user.nAlbo}}</div>
         </td>
-        <!-- <td>
-          <tr *ngFor="let competenza of competenze">
+        <td>
+          <tr *ngFor="let competenza of users.competenze">
             <td>{{ competenza.titolo }}</td>
             <td>{{ competenza.descrizione }}</td>
           </tr>
-        </td> -->
+        </td>
 
 
 

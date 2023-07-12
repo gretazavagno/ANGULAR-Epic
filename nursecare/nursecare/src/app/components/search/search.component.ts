@@ -13,16 +13,19 @@ export class SearchComponent implements OnInit {
   searchValue!: string;
   user: any;
   users: any = {};
-  competenze: any[] = [];
-
+  competenze = {
+    titolo: '',
+    descrizione: '',
+    key: '',
+  };
   constructor(private authSrv: AuthService, private firedatabase: AngularFireDatabase, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.authSrv.getUserData().subscribe(data => {
-      this.user = data;
-      console.log(data);
-      this.loadCompetenze();
-    });
+    // this.authSrv.getUserData().subscribe(data => {
+    //   this.user = data;
+    //   console.log(data);
+    //   this.loadCompetenze();
+    // });
   }
 
   cerca(): void {
@@ -43,6 +46,13 @@ export class SearchComponent implements OnInit {
           return false;
         });
       });
+
+      this.authSrv.getUserData().subscribe(data => {
+        this.user = data;
+        console.log(data);
+        this.loadCompetenze();
+      });
+
   }
 
   loadCompetenze(): void {
@@ -50,7 +60,7 @@ export class SearchComponent implements OnInit {
       .list(`/users/${this.user?.uid}/competenze`)
       .valueChanges()
       .subscribe((competenze: any) => {
-        this.competenze = competenze;
+        this.users.competenze = competenze;
       });
   }
 
@@ -58,12 +68,12 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['/profilo-cercato', userId]);
   }
 
-  hasCompetenze(user: any): boolean {
-    return (
-      user.hasOwnProperty('competenze') &&
-      Array.isArray(user.competenze) &&
-      user.competenze.length > 0
-    );
-  }
+  // hasCompetenze(user: any): boolean {
+  //   return (
+  //     user.hasOwnProperty('competenze') &&
+  //     Array.isArray(user.competenze) &&
+  //     user.competenze.length > 0
+  //   );
+  // }
 }
 

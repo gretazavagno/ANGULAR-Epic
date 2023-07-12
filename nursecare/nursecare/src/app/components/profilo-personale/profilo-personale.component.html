@@ -66,86 +66,93 @@
 
 
 
-<div class="sfondo d-flex align-items-center">
-  <div class="form-box m-auto">
+<div class="sfondo ">
+  <div class="form-box m-auto mb-4">
     <form class="form" (ngSubmit)="submit()" #competenzeForm="ngForm">
-      <!-- <img src="assets/img/NCC_logo.png" alt="" srcset="" class="m-auto"/> -->
 
-      <span class="subtitle text-white">Aggiungi le tue competenze</span>
+      <h2 class="subtitle mb-3"><b>Aggiungi le tue esperienze lavorative</b></h2>
 
       <div class="form-container">
-
+        <label for="titolo"><b>Dove hai lavorato</b></label>
         <input
           type="text"
-          class="form-control"
+          class="form-control mb-3"
           name="titolo"
-          placeholder="aggiungi una skill"
+          placeholder="Aggiungi esperienza lavorativa"
           required
           [(ngModel)]="competenze.titolo"
           id="titolo"
         />
 
-        <input
-          type="email"
+        <!-- <input
+          type="text"
           name="descrizione"
           id="descrizione"
-          class="form-control"
-          placeholder="Descrizione: aggiungi dettagli"
+          class="form-control text-area"
+          placeholder="Parla della tua esperienza"
           required
           [(ngModel)]="competenze.descrizione"
-        />
+        /> -->
+
+        <label for="descrizione"><b>Descrivi la tua esperienza</b></label>
+        <textarea type="text"
+        name="descrizione" class="form-control" placeholder="Descrivi la tua esprienza di lavoro, cosa hai fatto e per quanto tempo" id="descrizione" style="height: 100px" [(ngModel)]="competenze.descrizione" required></textarea>
 
       </div>
-      <button type="submit">Aggiungi skill</button>
+      <button type="submit" class="btn btn-aggiungi">Aggiungi le tue esperienze lavorative</button>
 
     </form>
   </div>
 </div>
 
+<hr style="border: 2px solid black; margin: 10px 12px">
 <!--TABELLA IN CUI VENGONO INSERITI I TASK----->
+<div class="container-fluid tabella">
+  <table class="table mb-4">
+    <thead>
+      <tr>
+        <th scope="col">Datore di lavoro</th>
+        <th scope="col">Descrizione lavoro</th>
+        <th scope="col">Azioni</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let competenza of users.competenze">
+        <td>
+          <ng-container *ngIf="modifica !== competenza.key; else modificaSection">
+           {{ competenza.titolo }}
+          </ng-container>
+          <ng-template #modificaSection>
+            <input [(ngModel)]="competenza.titolo">
+            <button (click)="modificaCompetenza(competenza.key, competenza); modifica=null">Salva modifica</button>
+          </ng-template>
+        </td>
+        <td>
+          <ng-container *ngIf="modifica !== competenza.key; else modificaDescrizione">
+            {{ competenza.descrizione }}
+          </ng-container>
+          <ng-template #modificaDescrizione>
+            <input [(ngModel)]="competenza.descrizione">
+            <button (click)="modificaCompetenza(competenza.key, competenza); modifica=null">Salva modifica</button>
+          </ng-template>
+        </td>
 
-<table class="table mb-4">
-  <thead>
-    <tr>
-      <th scope="col">Skills</th>
-      <th scope="col">Descrizione</th>
-      <th scope="col">Azioni</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let competenza of users.competenze">
-      <td>
-        <ng-container *ngIf="modifica !== competenza.key; else modificaSection">
-         {{ competenza.titolo }}
-        </ng-container>
-        <ng-template #modificaSection>
-          <input [(ngModel)]="competenza.titolo">
-          <button (click)="modificaCompetenza(competenza.key, competenza); modifica=null">Salva modifica</button>
-        </ng-template>
-      </td>
-      <td>
-        <ng-container *ngIf="modifica !== competenza.key; else modificaDescrizione">
-          {{ competenza.descrizione }}
-        </ng-container>
-        <ng-template #modificaDescrizione>
-          <input [(ngModel)]="competenza.descrizione">
-          <button (click)="modificaCompetenza(competenza.key, competenza); modifica=null">Salva modifica</button>
-        </ng-template>
-      </td>
+        <td class="d-flex justify-content-start button">
+          <button class="btn btn-success mb-1 mx-1 rounded-pill" (click)="modifica = competenza.key" data-toggle="tooltip">Modifica</button>
+          <button class="btn btn-danger mb-1 mx-1 rounded-pill" (click)="eliminaCompetenza(competenza.key)"  data-toggle="tooltip" title="ELIMINA Task">  <i class="bi bi-trash px-2"></i>Elimina</button>
+        </td>
 
-      <td class="d-flex justify-content-evenly">
-        <button class="btn btn-success mb-1 mx-1 rounded-pill" (click)="modifica = competenza.key" data-toggle="tooltip">Modifica</button>
-        <button class="btn btn-danger mb-1 mx-1 rounded-pill" (click)="eliminaCompetenza(competenza.key)"  data-toggle="tooltip" title="ELIMINA Task">  <i class="bi bi-trash px-2"></i>Elimina</button>
-      </td>
+      </tr>
+    </tbody>
+  </table>
 
-    </tr>
-  </tbody>
-</table>
+<!--BUTTON PER INVIARE I DATI-->
+<button [routerLink]="['/dettagli-profilo']" [queryParams]="{ competenze: users.competenze }" routerLinkActive="active" class="btn btn-aggiungi">Visualizza dettagli</button>
+</div>
+
 
 <div *ngIf="competenzeAggiunte">
   <p>Competenze aggiunte con successo!</p>
   <p>Verrai reindirizzato alla pagina di dettaglio del profilo.</p>
 </div>
 
-<!--BUTTON PER INVIARE I DATI-->
-<button [routerLink]="['/dettagli-profilo']" [queryParams]="{ competenze: users.competenze }" routerLinkActive="active">Visualizza dettagli</button>

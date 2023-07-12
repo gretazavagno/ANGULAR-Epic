@@ -166,5 +166,48 @@ nav {
   color: white;
 }
 
+//FORM------------------------------------------------------------
+
+.sfondo{
+  width: 100%;
+  display: flex;
+  background-color: white;
+  margin-top: 20px;
+}
+
+.sfondo .form-box{
+  width: 97%;
+}
+
+.form-box h2{
+  text-align: center;
+}
+
+.btn-aggiungi{
+  background-color: rgb(226, 230, 252);
+  color: #1d1f61;
+  border: 1px solid #1d1f61;
+  margin-top: 10px;
+}
+
+.btn-aggiungi:hover{
+  background-color: #1d1f61;
+  color: white;
+}
+
+label {
+  color: #1d1f61;
+}
+
+
+@media screen and (max-width: 767px) {
+ tbody .button{
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+ }
+}
+
+
 
 

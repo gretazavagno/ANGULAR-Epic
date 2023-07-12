@@ -28,42 +28,57 @@
   </div>
 </nav>
 
-<div class="dati-anagrafici bg-dark text-light">
-  <h2>I tuoi dati anagrafici</h2>
-  <p>Nome: {{user.nome}}</p>
-  <p>Cognome: {{user.cognome}} </p>
-  <p>Data di nascita: {{ user.dataNascita }}</p>
-  <p>Indirizzo di residenza: {{user.indirizzo}}, {{user.zipCode}}, {{user.citta}}</p>
-</div>
-<hr>
-<div class="professione bg-dark text-light">
+
+<!-------------------------------------CORPO----------------------------------->
+<main>
+  <div class="container-fluid container-dati">
+    <div class="dati-anagrafici">
+      <h2>I tuoi dati anagrafici</h2>
+      <p>Nome: <b>{{user.nome}}</b></p>
+      <p>Cognome: <b>{{user.cognome}}</b> </p>
+      <p>Data di nascita: <b>{{ user.dataNascita }} </b></p>
+      <p>Indirizzo di residenza: <b> {{user.indirizzo}}</b>, <b>{{user.zipCode}}</b>, <b> {{user.citta}} </b></p>
+    </div>
+
+    <div class="professione">
   <h2>Profilo Professionale</h2>
-  <p>Professione: {{user.professione}}</p>
-  <p>Numero di iscrizione all'albo: {{user.nAlbo}}</p>
+  <p>Professione: <b>{{user.professione}}</b></p>
+  <p>Numero di iscrizione all'albo: <b>{{user.nAlbo}}</b></p>
   <p>Anni di esperienza: </p> <!--Aggiungere anni di esperienza, un form tipo-->
 </div>
-<div class="contatti bg-dark text-light">
+<div class="contatti">
   <h2>Contatti</h2>
-  <p>Numero di cellulare: {{user.number}}</p>
-  <p>Email: {{user.email}}</p>
+  <p>Numero di cellulare: <b>{{user.number}}</b></p>
+  <p>Email: <b>{{user.email}}</b></p>
 </div>
 
 
-<h2>Competenze</h2>
-<table>
-  <thead>
-    <tr>
-      <th>Titolo</th>
-      <th>Descrizione</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let competenza of competenze">
-      <td>{{ competenza.titolo }}</td>
-      <td>{{ competenza.descrizione }}</td>
-    </tr>
-  </tbody>
-</table>
+<!------------------------------------------------>
+
+<div class="esperienza">
+  <h2>Esperienza Lavorativa</h2>
+  <table class="table mb-4">
+    <thead>
+      <tr>
+        <th scope="col">Datore di lavoro</th>
+        <th scope="col">Descrizione lavoro</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let competenza of competenze">
+        <td><b>{{ competenza.titolo }}</b></td>
+        <td>{{ competenza.descrizione }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-custom-join" type="submit" (click)="vaiAggiungiSkills()">Aggiungi Esperienza</button>
+</div>
+</div>
+
+</main>
 
 
-<button class="btn btn-custom-join" type="submit" (click)="vaiAggiungiSkills()">Aggiungi Skills</button>
+
+
+
+
