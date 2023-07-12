@@ -1,6 +1,37 @@
-footer{
-  background-color: #de2086;
-  height: 100px;
+// footer{
+//   background-color: #de2086;
+//   height: 100px;
+// }
+
+footer {
+  background-color: rgb(226, 230, 252);
+  padding: 20px;
+  text-align: center;
+  color: black;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-info {
+  margin-right: 20px;
+}
+
+.footer-linkedin img {
+  width: 30px;
+}
+
+a{
+  color: black;
+  font-weight: 600;
+}
+
+i {
+  color: #1d1f61;
 }
 
 // #1d1f61 #de2086  rgb(226, 230, 252)

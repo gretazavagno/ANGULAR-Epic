@@ -1,0 +1,38 @@
+.cont-chisiamo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+  background-color: rgb(226, 230, 252);
+  margin: 0;
+  padding: 30px 0px;
+  height: 80vh;
+}
+
+.chi-siamo h1{
+  font-weight: 700;
+}
+
+.chi-siamo h5{
+  margin-right: 50px;
+}
+
+.chi-siamo{
+  width: 40%;
+}
+
+.rete{
+  width: 40%;
+}
+
+.rete .portale h3, .rete .territorio h3{
+  font-weight: 600;
+}
+
+.portale, .territorio{
+  border: 1px solid black;
+  margin-bottom: 30px;
+  padding: 30px 40px;
+  background-color: white;
+}
+

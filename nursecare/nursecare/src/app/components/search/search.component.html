@@ -11,7 +11,6 @@
       <tr>
         <th scope="col">Nome</th>
         <th scope="col">Descrizione</th>
-        <th scope="col">Competenze</th>
         <th scope="col">Contatti</th>
       </tr>
     </thead>
@@ -28,15 +27,6 @@
           <div>Professione: {{user.professione}}</div>
           <div>Numero di iscrizione all'albo: {{user.nAlbo}}</div>
         </td>
-        <td>
-          <tr *ngFor="let competenza of users.competenze">
-            <td>{{ competenza.titolo }}</td>
-            <td>{{ competenza.descrizione }}</td>
-          </tr>
-        </td>
-
-
-
         <td class="contatti">
             <div>Email: {{user.email}}</div>
             <div>Numero di cellulare: {{user.number}}</div>
@@ -45,21 +35,6 @@
       </tr>
     </tbody>
   </table>
-  <!-- <div *ngIf="users.length > 0">
-    <h3>Risultati:</h3>
-    <ul>
-      <li *ngFor="let user of users">
-        <div>{{ user.nome }} {{ user.cognome }}</div>
-        <div>Indirizzo: {{ user.indirizzo }}</div>
-        <div>zipCode: {{ user.zipCode }}</div>
-        <div>Città: {{user.citta}}</div>
-        <div>Data di nascita: {{user.dataNascita}}</div>
-        <div>Professione: {{user.professione}}</div>
-        <div>Numero di iscrizione all'albo: {{user.nAlbo}}</div>
-        <button (click)="visualizzaDettagli(user.uid)">Visualizza Dettagli</button>
-      </li>
-    </ul>
-  </div> -->
 
 
   <div class="sez-card container-fluid">
@@ -133,7 +108,3 @@
 </main>
 
 <app-footer></app-footer>
-
-
-
-

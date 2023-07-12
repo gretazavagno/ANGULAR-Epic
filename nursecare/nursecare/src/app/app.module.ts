@@ -4,6 +4,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { RouterModule, Route } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './Auth/auth.guard';
 
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './Auth/register/register.component';
@@ -22,8 +23,6 @@ import { MedicazioniComponent } from './components/medicazioni/medicazioni.compo
 import { CateteriStomieComponent } from './components/cateteri-stomie/cateteri-stomie.component';
 import { ChisiamoComponent } from './components/chisiamo/chisiamo.component';
 import { CertificazioniComponent } from './components/certificazioni/certificazioni.component';
-import { FaqComponent } from './components/faq/faq.component';
-import { ContattiComponent } from './components/contatti/contatti.component';
 import { CovidComponent } from './components/covid/covid.component';
 import { BpcoComponent } from './components/bpco/bpco.component';
 import { DiabeteComponent } from './components/diabete/diabete.component';
@@ -38,21 +37,6 @@ import { AnniEsperienzaComponent } from './components/anni-esperienza/anni-esper
 
 const routes: Route[] = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
-//   {
-//       path: 'profile',
-//       component: ProfileComponent,
-//       canActivate: [AuthGuard]
-//   },
-//   {
-//       path: 'film',
-//       component: MoviesComponent,
-//       canActivate: [AuthGuard]
-//   },
-//   {
-//     path: 'infoFIlm/:id',
-//     component: InfoFilmComponent,
-//     canActivate: [AuthGuard]
-// },
   {
       path: 'login',
       component: LoginComponent
@@ -68,10 +52,12 @@ const routes: Route[] = [
   {
     path: 'profilo-personale',
     component: ProfiloPersonaleComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'dettagli-profilo',
     component: DettagliProfiloComponent,
+    canActivate: [AuthGuard]
   },
 
   {
@@ -107,14 +93,6 @@ const routes: Route[] = [
     component: CertificazioniComponent
   },
   {
-    path:'faq',
-    component: FaqComponent
-  },
-  {
-    path: 'contatti',
-    component: ContattiComponent
-  },
-  {
     path: 'covid',
     component: CovidComponent
   },
@@ -144,17 +122,16 @@ const routes: Route[] = [
   },
   {
     path: 'aggiungi-titoli',
-    component: TitoliStudioComponent
+    component: TitoliStudioComponent,
+    canActivate: [AuthGuard]
+
   },
   {
     path: 'anni-esperienza',
-    component: AnniEsperienzaComponent
+    component: AnniEsperienzaComponent,
+    canActivate: [AuthGuard]
+
   }
-  // {
-  //   path: 'navbar',
-  //   component: NavBarComponent,
-    // canActivate: [AuthGuard]
-// },
 ]
 
 @NgModule({
@@ -174,8 +151,6 @@ const routes: Route[] = [
     CateteriStomieComponent,
     ChisiamoComponent,
     CertificazioniComponent,
-    FaqComponent,
-    ContattiComponent,
     CovidComponent,
     BpcoComponent,
     DiabeteComponent,
