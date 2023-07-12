@@ -1,21 +1,87 @@
-<nav class="navbar bg-body-tertiary p-0 mb-0">
-  <div class="container-fluid ncc-navbar">
-    <div class="row align-items-center">
-      <div class="col-6">
-        <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active">
-          <img src="assets/img/NCC_logo.png" alt="Logo" class="d-inline-block align-text-top logo">
-        </a>
+<app-navbar></app-navbar>
+<main>
+  <div class="d-flex container-fluid align-items-center sez-cerca">
+    <div class="content-main">
+      <h1>
+        Infermieri professionisti che hanno a cuore la tua salute
+      </h1>
+      <p>Cerca l'infermiere più vicino a te, parlaci, chiedi consigli e fissa un appuntamento!</p>
+      <button class="btn btn-custom-join" type="submit" (click)="VaiSearch()">Cerca Infermieri</button>
+    </div>
+    <div class="img-section">
+      <img class="img-responsive nurse-img" src="assets/img/doctor-image.png">
+    </div>
+  </div>
+
+  <div class="sezione-servizi">
+    <h1>Nurse Care: una piattaforma per infiniti servizi!</h1>
+    <div class="privato-cittadino container-fluid">
+      <div class="privati">
+        <h3>Per privati e cliniche sanitarie</h3>
+        <p>Hai uno studio medico o sei una clinica privata che sta cercando un infermiere professionista per lavorare nel tuo team? Questa piattaforma ti mette in contatto con gli infermieri in p. Iva vicino a te, avrai la possibilità di contattarli per chiedere loro la disponibilità di lavoro quando ne avrai bisogno.</p>
       </div>
-      <div class="col-6 text-end mb-1 mt-1 align-items-center">
-        <form class="form">
-          <button class="btn btn-custom-join" type="submit" (click)="vaiLogIn()">Log In</button>
-          <button class="btn btn-custom-join" type="submit" (click)="vaiRegister()">Join In</button>
-        </form>
+      <div class="cittadino">
+        <h3>Per il cittadino</h3>
+        <p>
+          Questa piattaforma mette al tuo servizio infermieri altamente qualificati per erogare prestazioni sanitarie di qualità, personalizzate e direttamente a casa tua! I nostri professionisti sanitari si occuperanno di te o del tuo familiare, costruendo un rapporto unico e di fiducia nel percorso di cura.
+        </p>
       </div>
     </div>
   </div>
-</nav>
-<app-search></app-search>
+  <div class="sez-card container-fluid">
+    <div class="card" style="width: 18rem;">
+      <img src="assets/img/assistenza-anzini.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Assistenza Anziani</h5>
+        <p class="card-text">Le persone anziane sono il bene più prezioso che una comunità evoluta possiede e che deve assolutamente preservare! Nure Care permette di trovare un infermiere disponibile nella tua zona che li assiste a casa loro, evitando inutili spostamenti e interminabili code. Scopri tutti i nostri servizi di assistenza anziani a domicilio.</p>
+        <a [routerLink]="['/assistenza-anziani']" routerLinkActive="active" class="btn">Scopri di più</a>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="assets/img/prelievo-sangue.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Esami a domicilio</h5>
+        <p class="card-text">
+          Nurse Care ti permette di trovare un infermiere nella tua zona per eseguire a domicilio i prelievi ematici, raccolta di campioni biologici (urine, espettorato, tamponi, ecc…) recandosi a casa tua evitando che tu debba spostarti e fare file snervanti.
+          Un Infermiere esperto nei prelievi a domicilio, svolgerà la prestazione a casa tua e l’esito ti arriverà via mail in tempi brevi.
+          </p>
+        <a [routerLink]="['/prelievi']" routerLinkActive="active" class="btn">Scopri di più</a>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="assets/img/telemedicina.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Telemedicina</h5>
+        <p class="card-text">La telemedicina avvicina la medicina specialistica alle persone nello spazio e nel tempo. Attraverso le nuove tecnologie informatiche e di telecomunicazione è di fatti possibile uno scambio di informazioni in real time, ovvero in diretta, permettendo da remoto un’assistenza immediata da parte di uno specialista.</p>
+        <a [routerLink]="['/telemedicina']" routerLinkActive="active" class="btn">Scopri di più</a>
+    </div>
+  </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="assets/img/medicazioni.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Medicazioni</h5>
+        <p class="card-text">Eseguire una medicazione sembra cosa semplice, ma un professionista può fare la differenza nei tempi di cura e guarigione. Scopri tutti i nostri servizi di medicazioni a domicilio.</p>
+        <a [routerLink]="['/medicazioni']" routerLinkActive="active" class="btn">Scopri di più</a>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="assets/img/catetere-stomie.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Cateteri e Stomie</h5>
+        <p class="card-text">
+          Cateteri e stomie sono pratiche che richiedono precisione, con una particolare cura e attenzione verso il paziente in terapia.
+          Nurse Care offre servizi specializzati per cateteri e stomie a domicilio.
+          </p>
+        <a [routerLink]="['/cateteri-stomie']" routerLinkActive="active" class="btn">Scopri di più</a>
+      </div>
+    </div>
+</div>
 
 
+</main>
 
+<app-footer></app-footer>

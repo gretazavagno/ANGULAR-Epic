@@ -1,124 +1,41 @@
-<app-home></app-home>
-  <div class="sfondo d-flex align-items-center">
+<app-navbar></app-navbar>
+<div class="sfondo d-flex align-items-center">
   <div class="form-box m-auto">
     <form class="form" #form="ngForm">
-
-
       <span class="subtitle text-white">Crea il tuo account</span>
       <div class="form-container">
-        <input
-          type="text"
-          class="form-control"
-          name="nome"
-          placeholder="Nome"
-          required
-          [(ngModel)]="nome"
-          id="nome"
-        />
-        <input
-          type="text"
-          class="form-control"
-          name="cognome"
-          placeholder="Cognome"
-          required
-          [(ngModel)]="cognome"
-          id="cognome"
-        />
-        <input
-        type="text"
-        class="form-control"
-        name="dataNascita"
-        placeholder="Data di nascita"
-        required
-        [(ngModel)]="dataNascita"
-        id="dataNascita"
-      />
-        <input
-          type="text"
-          class="form-control"
-          name="indirizzo"
-          placeholder="Indirizzo"
-          required
-          [(ngModel)]="indirizzo"
-          id="indirizzo"
-        />
-        <input
-          type="text"
-          class="form-control"
-          name="zipCode"
-          placeholder="Zip Code"
-          required
-          [(ngModel)]="zipCode"
-          id="zipCode"
-        />
-        <input
-          type="text"
-          class="form-control"
-          name="citta"
-          placeholder="Città"
-          required
-          [(ngModel)]="citta"
-          id="citta"
-        />
-        <input
-        type="text"
-        class="form-control"
-        name="professione"
-        placeholder="Professione"
-        required
-        [(ngModel)]="professione"
-        id="professione"
-      />
-      <input
-      type="text"
-      class="form-control"
-      name="nAlbo"
-      placeholder="Numero iscrizione all'albo"
-      required
-      [(ngModel)]="nAlbo"
-      id="nAlbo"
-    />
+        <input type="text" class="form-control" name="nome" placeholder="Nome" required [(ngModel)]="nome" id="nome" />
+        <input type="text" class="form-control" name="cognome" placeholder="Cognome" required [(ngModel)]="cognome"
+          id="cognome" />
+        <input type="text" class="form-control" name="dataNascita" placeholder="Data di nascita" required
+          [(ngModel)]="dataNascita" id="dataNascita" />
+        <input type="text" class="form-control" name="indirizzo" placeholder="Indirizzo" required [(ngModel)]="indirizzo"
+          id="indirizzo" />
+        <input type="text" class="form-control" name="zipCode" placeholder="Zip Code" required [(ngModel)]="zipCode"
+          id="zipCode" />
+        <input type="text" class="form-control" name="citta" placeholder="Città" required [(ngModel)]="citta" id="citta" />
+        <input type="text" class="form-control" name="professione" placeholder="Professione" required [(ngModel)]="professione"
+          id="professione" />
+        <input type="text" class="form-control" name="nAlbo" placeholder="Numero iscrizione all'albo" required
+          [(ngModel)]="nAlbo" id="nAlbo" />
+        <input type="number" name="number" id="number" class="form-control" placeholder="numero di cellulare" required
+          [(ngModel)]="number" />
+        <input type="email" name="email" id="email" class="form-control" placeholder="e-mail" required [(ngModel)]="email" />
 
-        <input
-          type="email"
-          name="email"
-          id="email"
-          class="form-control"
-          placeholder="e-mail"
-          required
-          [(ngModel)]="email"
-        />
-
-        <input
-          type="password"
-          id="password"
-          name="password"
-          class="form-control"
-          placeholder="Password"
-          required
-          [(ngModel)]="password"
-        />
-      </div>
-      <button
-        type="submit"
-        [disabled]="form.invalid"
-        class="btn btn-primary mt-3"
-        (click)="registra()"
-      >
-        Registrati
-      </button>
-      <!-- <span
-        *ngIf="isLoading"
-        class="spinner-border spinner-border-sm"
-        role="status"
-      ></span> -->
+        <input type="password" id="password" name="password" class="form-control" placeholder="Password" required
+          [(ngModel)]="password" />
+        </div>
+        <button type="submit" [disabled]="form.invalid" class="btn mt-3" (click)="registra()">
+          Registrati
+        </button>
     </form>
+
     <div class="form-section">
-      <p class="text-secondary">
+      <p class="text-dark">
         Hai già un account?
         <a
           class="nav-link regisrati"
-          style="color: #e50914"
+          style="color: #de2086"
           [routerLink]="['/login']"
           routerLinkActive="active"
           >Accedi</a

@@ -1,0 +1,59 @@
+.ncc-navbar{
+  background-color: #1d1f61;
+}
+
+nav {
+  padding: 0;
+}
+
+.nav-items{
+  justify-content: end;
+  flex-wrap: nowrap;
+}
+
+.nav-items li a{
+  color: white;
+  cursor: pointer;
+}
+
+.nav-items li a:hover{
+  color: #de2086;
+  text-decoration: underline #de2086;
+}
+
+.dropdown-menu{
+  background-color: white;
+  border: 1px solid #de2086;
+}
+
+.dropdown-menu li{
+  text-decoration: underline #1d1f61;
+}
+
+.dropdown-menu li a{
+  color: #1d1f61;
+}
+
+.btn-custom-join{
+  background-color: #1d1f61;
+  color: white;
+  font-weight: 700;
+  font-size: 100%;
+  border: 2px solid #de2086;
+  border-radius: 5px;
+  // padding: 1% 9%;
+  transition: background-color 1s ease;
+  transition: color 1s ease;
+  margin: 10px 0px;
+  width: fit-content;
+  padding: 2px 30px;
+  flex-wrap: nowrap;
+}
+
+.btn-custom-join:hover{
+  background-color: #de2086;
+  color: white;
+}
+
+
+

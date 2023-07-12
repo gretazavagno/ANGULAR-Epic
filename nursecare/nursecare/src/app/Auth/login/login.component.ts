@@ -21,7 +21,11 @@ export class LoginComponent implements OnInit {
       this.authSvr.login(this.email, this.password)
       .then(()=>{
         console.log("Login success");
-        this.router.navigate(['/profilo-personale']); //dove voglio andare appena accedo
+        this.router.navigate(['/dettagli-profilo']); //dove voglio andare appena accedo
+      })
+      .catch(()=>{
+        alert('Ops, non sei registrato');
+        this.router.navigate(['/register']);
       })
   }
 

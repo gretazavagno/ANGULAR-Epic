@@ -1,22 +1,139 @@
-<h2>Ricerca Utenti</h2>
-<input type="text" [(ngModel)]="searchValue" placeholder="Inserisci il valore di ricerca">
-<button (click)="cerca()">Cerca</button>
+<app-navbar></app-navbar>
+<main class="container-fluid p-3 container-cerca">
+  <h2>Cerca Infermieri Vicino a Te</h2>
+  <div class="d-flex align-items-center justify-content-center search">
+    <input class="form-control me-2" type="text" [(ngModel)]="searchValue" placeholder="Inserisci Codice Postale">
+    <button (click)="cerca()" class="btn">Cerca</button>
+  </div>
 
-<div *ngIf="users.length > 0">
-  <h3>Risultati:</h3>
-  <ul>
-    <li *ngFor="let user of users">
-      <div>{{ user.nome }} {{ user.cognome }}</div>
-      <div>Indirizzo: {{ user.indirizzo }}</div>
-      <div>zipCode: {{ user.zipCode }}</div>
-      <div>Città: {{user.citta}}</div>
-      <div>Data di nascita: {{user.dataNascita}}</div>
-      <div>Professione: {{user.professione}}</div>
-      <div>Numero di iscrizione all'albo: {{user.nAlbo}}</div>
-      <!--AGGIUNGERE UN BUTTON PER OGNI PROFILO PER ENTRARE NELLA PAGINA DEI PROFILO CERCATO E PRENOTARE LA PRESTAZIONE-->
-      <button (click)="visualizzaDettagli(user.uid)">Visualizza Dettagli</button>
-    </li>
-  </ul>
+  <table class="table mb-4" *ngIf="users.length > 0">
+    <thead>
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Descrizione</th>
+        <!-- <th scope="col">Competenze</th> -->
+        <th scope="col">Contatti</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>
+          <div>{{ user.nome }} {{ user.cognome }}</div>
+        </td>
+        <td>
+          <div>Indirizzo: {{ user.indirizzo }}</div>
+          <div>zipCode: {{ user.zipCode }}</div>
+          <div>Città: {{user.citta}}</div>
+          <div>Data di nascita: {{user.dataNascita}}</div>
+          <div>Professione: {{user.professione}}</div>
+          <div>Numero di iscrizione all'albo: {{user.nAlbo}}</div>
+        </td>
+        <!-- <td>
+          <tr *ngFor="let competenza of competenze">
+            <td>{{ competenza.titolo }}</td>
+            <td>{{ competenza.descrizione }}</td>
+          </tr>
+        </td> -->
+
+
+
+        <td class="contatti">
+            <div>Email: {{user.email}}</div>
+            <div>Numero di cellulare: {{user.number}}</div>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+  <!-- <div *ngIf="users.length > 0">
+    <h3>Risultati:</h3>
+    <ul>
+      <li *ngFor="let user of users">
+        <div>{{ user.nome }} {{ user.cognome }}</div>
+        <div>Indirizzo: {{ user.indirizzo }}</div>
+        <div>zipCode: {{ user.zipCode }}</div>
+        <div>Città: {{user.citta}}</div>
+        <div>Data di nascita: {{user.dataNascita}}</div>
+        <div>Professione: {{user.professione}}</div>
+        <div>Numero di iscrizione all'albo: {{user.nAlbo}}</div>
+        <button (click)="visualizzaDettagli(user.uid)">Visualizza Dettagli</button>
+      </li>
+    </ul>
+  </div> -->
+
+
+  <div class="sez-card container-fluid">
+    <div class="card" style="width: 18rem;">
+      <img src="assets/img/assistenza-anzini.jpeg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Assistenza Anziani</h5>
+        <p class="card-text">Le persone anziane sono il bene più prezioso che una comunità evoluta possiede e che deve assolutamente preservare! Nure Care permette di trovare un infermiere disponibile nella tua zona che li assiste a casa loro, evitando inutili spostamenti e interminabili code. Scopri tutti i nostri servizi di assistenza anziani a domicilio.</p>
+        <a href="#" class="btn">Scopri di più</a>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="assets/img/prelievo-sangue.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Esami a domicilio</h5>
+        <p class="card-text">
+          Nurse Care ti permette di trovare un infermiere nella tua zona per eseguire a domicilio i prelievi ematici, raccolta di campioni biologici (urine, espettorato, tamponi, ecc…) recandosi a casa tua evitando che tu debba spostarti e fare file snervanti.
+          Un Infermiere esperto nei prelievi a domicilio, svolgerà la prestazione a casa tua e l’esito ti arriverà via mail in tempi brevi.
+          </p>
+        <a href="#" class="btn">Scopri di più</a>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="assets/img/telemedicina.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Telemedicina</h5>
+        <p class="card-text">La telemedicina avvicina la medicina specialistica alle persone nello spazio e nel tempo. Attraverso le nuove tecnologie informatiche e di telecomunicazione è di fatti possibile uno scambio di informazioni in real time, ovvero in diretta, permettendo da remoto un’assistenza immediata da parte di uno specialista.</p>
+        <a href="#" class="btn">Scopri di più</a>
+    </div>
+  </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="assets/img/medicazioni.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Medicazioni</h5>
+        <p class="card-text">Eseguire una medicazione sembra cosa semplice, ma un professionista può fare la differenza nei tempi di cura e guarigione. Scopri tutti i nostri servizi di medicazioni a domicilio.</p>
+        <a href="#" class="btn">Scopri di più</a>
+      </div>
+    </div>
+
+    <div class="card" style="width: 18rem;">
+      <img src="assets/img/catetere-stomie.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Cateteri e Stomie</h5>
+        <p class="card-text">
+          Cateteri e stomie sono pratiche che richiedono precisione, con una particolare cura e attenzione verso il paziente in terapia.
+          Nurse Care offre servizi specializzati per cateteri e stomie a domicilio.
+          </p>
+        <a href="#" class="btn">Scopri di più</a>
+      </div>
+    </div>
 </div>
+
+  <div class="sezione-servizi">
+    <h1>Nurse Care: una piattaforma per infiniti servizi!</h1>
+    <div class="privato-cittadino container-fluid">
+      <div class="privati">
+        <h3>Per privati e cliniche sanitarie</h3>
+        <p>Hai uno studio medico o sei una clinica privata che sta cercando un infermiere professionista per lavorare nel tuo team? Questa piattaforma ti mette in contatto con gli infermieri in p. Iva vicino a te, avrai la possibilità di contattarli per chiedere loro la disponibilità di lavoro quando ne avrai bisogno.</p>
+      </div>
+      <div class="cittadino">
+        <h3>Per il cittadino</h3>
+        <p>
+          Questa piattaforma mette al tuo servizio infermieri altamente qualificati per erogare prestazioni sanitarie di qualità, personalizzate e direttamente a casa tua! I nostri professionisti sanitari si occuperanno di te o del tuo familiare, costruendo un rapporto unico e di fiducia nel percorso di cura.
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>
+
+
 
 

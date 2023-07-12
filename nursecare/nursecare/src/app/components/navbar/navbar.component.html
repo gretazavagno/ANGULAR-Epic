@@ -1,0 +1,58 @@
+<nav class="navbar sticky-top navbar-expand-lg">
+  <div class="container-fluid ncc-navbar">
+    <a class="navbar-brand" href="#"><img src="assets/img/logo-trasparente.png" style="width: 200px;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse nav-items" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLink]="['/home']" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}">HOME</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            SERVIZI
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/assistenza-anziani']" routerLinkActive="active">ASSISTENZA ANZIANI</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/prelievi']" routerLinkActive="active">PRELIEVI A DOMICILIO</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/telemedicina']" routerLinkActive="active">TELEMEDICINA</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/medicazioni']" routerLinkActive="active">MEDICAZIONI</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/cateteri-stomie']" routerLinkActive="active">CATETERI E STOMIE</a></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            CHI SIAMO
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/chi-siamo']" routerLinkActive="active">CHI SIAMO</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/certificazioni']" routerLinkActive="active">ASSISTENZA QUALIFICATA E CERTIFICATA</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/faq']" routerLinkActive="active">FAQ</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/contatti']" routerLinkActive="active">CONTATTI</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            BLOG
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/covid']" routerLinkActive="active">COVID</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/bpco']" routerLinkActive="active">BPCO</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/cardiopatie']" routerLinkActive="active">CARDIOPATIE</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/diabete']" routerLinkActive="active">DIABETE</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/ipertensione']" routerLinkActive="active">IPERTENSIONE</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/malattie-renali']" routerLinkActive="active">MALATTIE RENALI</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/malattie-tumorali']" routerLinkActive="active">MALATTIE TUMORALI</a></li>
+          </ul>
+        </li>
+      </ul>
+      <div>
+        <button class="btn btn-custom-join" type="submit" (click)="vaiLogIn()">Log In</button>
+      </div>
+    </div>
+  </div>
+</nav>

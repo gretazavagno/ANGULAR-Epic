@@ -1,12 +1,28 @@
-<nav class="navbar bg-body-tertiary p-0 mb-5">
+<nav class="navbar sticky-top navbar-expand-lg">
   <div class="container-fluid ncc-navbar">
-    <a class="navbar-brand">BENVENUTO {{user.nome}} {{user.cognome}}!</a> <!--Aggiungere nome dell'utente-->
-    <div class="d-flex ">
-      <div class="container mr-5">
-        <a [routerLink]="['/dettagli-profilo']" routerLinkActive="active" class="link" >Dettagli</a>
-      </div>
-      <div class="container mr-5">
-        <a [routerLink]="['/home']" routerLinkActive="active" class="link"><i class="bi bi-box-arrow-right"></i></a>
+    <a class="navbar-brand" href="#"><img src="assets/img/logo-trasparente.png" style="width: 200px;"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse nav-items" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <h3 class="navbar-brand" style="color: white; font-weight: 600; align-items: center;">BENVENUTO {{user.nome}} {{user.cognome}}!</h3>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            IL TUO PROFILO
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" [routerLink]="['/dettagli-profilo']" routerLinkActive="active">VISUALIZZA DATI</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/profilo-personale']" routerLinkActive="active">AGGIUNGI COMPETENZE</a></li>
+          </ul>
+        </li>
+
+      </ul>
+      <div>
+        <a [routerLink]="['/home']" routerLinkActive="active" class="link"><i class="bi bi-box-arrow-right" style="color: white; font-size: 40px;"></i></a>
       </div>
     </div>
   </div>
@@ -26,22 +42,12 @@
   <p>Numero di iscrizione all'albo: {{user.nAlbo}}</p>
   <p>Anni di esperienza: </p> <!--Aggiungere anni di esperienza, un form tipo-->
 </div>
+<div class="contatti bg-dark text-light">
+  <h2>Contatti</h2>
+  <p>Numero di cellulare: {{user.number}}</p>
+  <p>Email: {{user.email}}</p>
+</div>
 
-
-<!-- <table class="table mb-4">
-  <thead>
-    <tr>
-      <th scope="col">Skills</th>
-      <th scope="col">Descrizione</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let competenza of competenze">
-      <td> {{ competenza.key.titolo }}</td>
-      <td>{{ competenza.key.descrizione }}</td>
-    </tr>
-  </tbody>
-</table> -->
 
 <h2>Competenze</h2>
 <table>

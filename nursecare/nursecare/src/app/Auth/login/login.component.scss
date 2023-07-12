@@ -10,9 +10,9 @@
   max-width: 300px;
   background: #f1f7fe;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 0px;
   color: #010101;
-    background-color: rgba(0, 0, 0, 0.8);  //trasparenza card
+  background-color: rgb(29, 31, 97, 0.8);  //trasparenza card
 }
 
 .form {
@@ -60,8 +60,9 @@
   padding: 16px;
   font-size: .85rem;
   background-color: #e0ecfb;
-  box-shadow: rgb(0 0 0 / 8%) 0 -1px;
-  background-color: rgba(0, 0, 0, 0.8); //trasparenza card
+  box-shadow: rgb(29 31 97 / 8%) 0 -1px;
+  background-color: rgb(226, 230, 252, 0.8); //trasparenza card
+  border: 1px solid #010101;
 }
 
 .form-section a {
@@ -77,9 +78,9 @@
 
 /*Button*/
 .form button {
-  background-color:  #E50914;;
+  background-color: #1d1f61;;
   color: #fff;
-  border: 0;
+  border: 2px solid white;
   border-radius: 24px;
   padding: 10px 16px;
   font-size: 1rem;
@@ -89,11 +90,8 @@
 }
 
 .form button:hover {
-  background-color: #b30a13;;
-}
-
-.registrati{
-  color: #E50914 !important;
+  background-color: #de2086;
+  border: none;
 }
 
 img{

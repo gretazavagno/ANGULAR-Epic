@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AuthService } from 'src/app/Auth/auth.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -10,20 +11,22 @@ import { Router } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
   searchValue!: string;
-  users: any[] = [];
+  user: any;
+  users: any = {};
+  competenze: any[] = [];
 
-  constructor(private router: Router, private firedatabase: AngularFireDatabase, private authSrv: AuthService) { }
+  constructor(private authSrv: AuthService, private firedatabase: AngularFireDatabase, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // this.authSrv.getUserData().subscribe(data => {
-    //   this.user = data;
-    //   console.log(data);
-    // });
+    this.authSrv.getUserData().subscribe(data => {
+      this.user = data;
+      console.log(data);
+      this.loadCompetenze();
+    });
   }
 
   cerca(): void {
     this.users = [];
-
     this.firedatabase
       .list('/users')
       .valueChanges()
@@ -42,10 +45,25 @@ export class SearchComponent implements OnInit {
       });
   }
 
-  visualizzaDettagli(userId: string): void {
+  loadCompetenze(): void {
+    this.firedatabase
+      .list(`/users/${this.user?.uid}/competenze`)
+      .valueChanges()
+      .subscribe((competenze: any) => {
+        this.competenze = competenze;
+      });
+  }
+
+  contatti(userId: number): void {
     this.router.navigate(['/profilo-cercato', userId]);
   }
 
-
+  hasCompetenze(user: any): boolean {
+    return (
+      user.hasOwnProperty('competenze') &&
+      Array.isArray(user.competenze) &&
+      user.competenze.length > 0
+    );
+  }
 }
 

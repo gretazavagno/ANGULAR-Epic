@@ -1,29 +1,146 @@
-.ncc-navbar{
-  background-color: #0160b0;
-}
 
 .btn-custom-join{
-  background-color: #0160b0;
-  color: #ffacac;
+  background-color: #1d1f61;
+  color: white;
   font-weight: 700;
   font-size: 100%;
-  border: 2px solid #ffacac;
-  border-radius: 20px;
+  border-radius: 5px;
   padding: 1% 9%;
   transition: background-color 1s ease;
   transition: color 1s ease;
-  margin-right: 10px;
-
+  margin-top: 20px;
 }
 
 .btn-custom-join:hover{
-  background-color: #ffacac;
-  color: #0160b0;
+  background-color: #de2086;
+  color: white;
+}
+
+.sez-cerca {
+  background-color: rgb(226, 230, 252);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5%;
+}
+
+.content-main, .img-section{
+  flex: 1; /* Occupa lo spazio disponibile in modo uguale */
+  height: 100%;
+}
+.img-section{
+  box-sizing: content-box;
+}
+
+h1, p {
+  margin: 0; /* Rimuovere il margine predefinito */
+}
+
+h1{
+  font-weight: 900;
+}
+
+p{
+  font-weight: 600;
 }
 
 img {
-  width: 50%;
-  height: auto;
+  max-width: 100%; /* Adattarsi allo screen */
 }
+
+@media screen and (max-width: 767px) {
+  /* Stili per la versione mobile */
+  .img-section {
+    display: none; /* Nascondere l'immagine in versione mobile */
+  }
+
+  .sez-cerca{
+    padding: 20px 100px;
+    text-align: center;
+    background-image: url('/assets/img/healthcare-team.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .privato-cittadino{
+    flex-direction: column;
+  }
+}
+
+
+//Seconda sezione
+.privato-cittadino{
+  display: flex;
+}
+
+.sezione-servizi{
+  margin-top: 60px;
+}
+
+.sezione-servizi h1{
+  font-weight: 700;
+  text-align: center;
+  color: #1d1f61;
+}
+
+.privati h3, .cittadino h3 {
+  font-weight: 700;
+  color: #de2086;
+  text-align: center;
+}
+
+.privati, .cittadino {
+  margin: 20px 20px;
+  border: 1px solid #1d1f61;
+  padding: 10px 30px;
+  text-align: center;
+  background-color: rgb(226, 230, 252);
+}
+
+
+//SEZIONE CARD
+
+.sez-card{
+  display: flex;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 1rem;
+  justify-content: center;
+  background-color: #1d1f61;
+}
+
+.card{
+  border-radius: 0;
+  margin-right: 30px;
+}
+
+
+
+.sez-card div div h5{
+  font-weight: 700;
+  color: #1d1f61;
+}
+
+.sez-card div img {
+  height: 200px;
+  width: auto;
+  border-radius: 0;
+}
+
+.card-body p{
+  background-color: white;
+  color: black;
+  font-weight: 100;
+}
+
+.card-body .btn{
+  background-color: #1d1f61;
+  color: white;
+  margin-top: 20px;
+}
+
 
 
