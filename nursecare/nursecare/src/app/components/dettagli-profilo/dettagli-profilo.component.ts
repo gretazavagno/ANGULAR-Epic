@@ -14,6 +14,8 @@ export class DettagliProfiloComponent implements OnInit {
   user: any;
   users: any = {};
   competenze: any[] = [];
+  titoli: any[] = [];
+
   constructor(private authSrv: AuthService, private firedatabase: AngularFireDatabase, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -21,6 +23,7 @@ export class DettagliProfiloComponent implements OnInit {
       this.user = data;
       console.log(data);
       this.loadCompetenze();
+      this.loadTitoli();
     });
 
   }
@@ -33,11 +36,39 @@ export class DettagliProfiloComponent implements OnInit {
       });
   }
 
+  loadTitoli(): void{
+    this.firedatabase
+    .list(`/users/${this.user?.uid}/titoli`)
+    .valueChanges()
+    .subscribe((titoli: any) => {
+      this.titoli = titoli;
+    });
+  }
+
   vaiAggiungiSkills(){
     this.router.navigate(['/profilo-personale'], { queryParams: { competenzeAggiunte: 'true' } });
   }
 
+  // METODO MODIFICA
 
+  modifica: string | null = null;
+
+  modificaCompetenza(key: string, competenzaModificata: Competenze) {
+   return this.firedatabase
+     .object(`/users/${this.user.uid}/competenze/${key}`)
+     .update(competenzaModificata)
+     .then(() => {
+       console.log('competenza modificata con successo', competenzaModificata);
+     })
+     .catch((error) => {
+       console.error('competenza non modificata con successo', error);
+     });
+ }
+
+ //AGGIUNGI MASTER
+ aggiungiMaster(){
+  this.router.navigate(['/aggiungi-titoli'], { queryParams: { competenzeAggiunte: 'true' } });
+}
 
 }
 

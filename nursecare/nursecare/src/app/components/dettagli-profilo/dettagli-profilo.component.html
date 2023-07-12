@@ -37,43 +37,65 @@
       <p>Nome: <b>{{user.nome}}</b></p>
       <p>Cognome: <b>{{user.cognome}}</b> </p>
       <p>Data di nascita: <b>{{ user.dataNascita }} </b></p>
-      <p>Indirizzo di residenza: <b> {{user.indirizzo}}</b>, <b>{{user.zipCode}}</b>, <b> {{user.citta}} </b></p>
+      <p>Indirizzo di residenza: <b> {{user.indirizzo}}</b>, <b>{{user.zipCode}}</b>, <b> {{user.citta}} </b>
+      </p>
+
+
+
+    </div>
+
+    <div class="contatti">
+      <h2>Contatti</h2>
+      <p>Numero di cellulare: <b>{{user.number}}</b></p>
+      <p>Email: <b>{{user.email}}</b></p>
     </div>
 
     <div class="professione">
-  <h2>Profilo Professionale</h2>
-  <p>Professione: <b>{{user.professione}}</b></p>
-  <p>Numero di iscrizione all'albo: <b>{{user.nAlbo}}</b></p>
-  <p>Anni di esperienza: </p> <!--Aggiungere anni di esperienza, un form tipo-->
-</div>
-<div class="contatti">
-  <h2>Contatti</h2>
-  <p>Numero di cellulare: <b>{{user.number}}</b></p>
-  <p>Email: <b>{{user.email}}</b></p>
+      <h2>Profilo Professionale</h2>
+      <p>Professione: <b>{{user.professione}}</b></p>
+      <p>Numero di iscrizione all'albo: <b>{{user.nAlbo}}</b></p>
+      <p>Anni di esperienza: </p> <!--Aggiungere anni di esperienza, un form tipo-->
+    </div>
+
+
+
+<div class="esperienza">
+  <h2>Titoli di studio</h2>
+  <ul *ngFor="let titolo of titoli">
+    <li><b>{{ titolo.titolo }}</b></li>
+
+  </ul>
+  <button class="btn btn-custom-join" type="submit" (click)="aggiungiMaster()">Aggiungi Titoli</button>
 </div>
 
 
 <!------------------------------------------------>
 
-<div class="esperienza">
-  <h2>Esperienza Lavorativa</h2>
-  <table class="table mb-4">
-    <thead>
-      <tr>
-        <th scope="col">Datore di lavoro</th>
-        <th scope="col">Descrizione lavoro</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let competenza of competenze">
-        <td><b>{{ competenza.titolo }}</b></td>
-        <td>{{ competenza.descrizione }}</td>
-      </tr>
-    </tbody>
-  </table>
-  <button class="btn btn-custom-join" type="submit" (click)="vaiAggiungiSkills()">Aggiungi Esperienza</button>
+  <div class="esperienza">
+    <h2>Esperienze Lavorative</h2>
+    <table class="table mb-4">
+      <thead>
+        <tr>
+          <th scope="col">Datore di lavoro</th>
+          <th scope="col">Descrizione lavoro</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let competenza of competenze">
+          <td><b>{{ competenza.titolo }}</b></td>
+          <td>{{ competenza.descrizione }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="btn btn-custom-join" type="submit" (click)="vaiAggiungiSkills()">Aggiungi Esperienza</button>
+  </div>
+
+  <!------------------------------------------------>
+
+
 </div>
-</div>
+
+
 
 </main>
 

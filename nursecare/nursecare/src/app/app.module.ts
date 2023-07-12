@@ -32,6 +32,7 @@ import { IpertensioneComponent } from './components/ipertensione/ipertensione.co
 import { MalattieRenaliComponent } from './components/malattie-renali/malattie-renali.component';
 import { MalattieTumoraliComponent } from './components/malattie-tumorali/malattie-tumorali.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { TitoliStudioComponent } from './components/titoli-studio/titoli-studio.component';
 
 const routes: Route[] = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
@@ -138,6 +139,10 @@ const routes: Route[] = [
   {
     path: 'malattie-tumorali',
     component: MalattieTumoraliComponent
+  },
+  {
+    path: 'aggiungi-titoli',
+    component: TitoliStudioComponent
   }
   // {
   //   path: 'navbar',
@@ -172,7 +177,8 @@ const routes: Route[] = [
     IpertensioneComponent,
     MalattieRenaliComponent,
     MalattieTumoraliComponent,
-    FooterComponent
+    FooterComponent,
+    TitoliStudioComponent
   ],
   imports: [
     BrowserModule,

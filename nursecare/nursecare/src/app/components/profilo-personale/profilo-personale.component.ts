@@ -20,6 +20,7 @@ export class ProfiloPersonaleComponent implements OnInit {
     descrizione: '',
     key: '',
   };
+
   competenzeAggiunte = false;
   competenzaInModifica: any = null; // Rappresenta la competenza attualmente in fase di modifica
 
