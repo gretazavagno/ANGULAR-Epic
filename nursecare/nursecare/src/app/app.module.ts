@@ -33,6 +33,8 @@ import { MalattieRenaliComponent } from './components/malattie-renali/malattie-r
 import { MalattieTumoraliComponent } from './components/malattie-tumorali/malattie-tumorali.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { TitoliStudioComponent } from './components/titoli-studio/titoli-studio.component';
+import { AnniEsperienzaComponent } from './components/anni-esperienza/anni-esperienza.component';
+
 
 const routes: Route[] = [
   { path: '', redirectTo: 'register', pathMatch: 'full' },
@@ -143,6 +145,10 @@ const routes: Route[] = [
   {
     path: 'aggiungi-titoli',
     component: TitoliStudioComponent
+  },
+  {
+    path: 'anni-esperienza',
+    component: AnniEsperienzaComponent
   }
   // {
   //   path: 'navbar',
@@ -178,7 +184,8 @@ const routes: Route[] = [
     MalattieRenaliComponent,
     MalattieTumoraliComponent,
     FooterComponent,
-    TitoliStudioComponent
+    TitoliStudioComponent,
+    AnniEsperienzaComponent,
   ],
   imports: [
     BrowserModule,

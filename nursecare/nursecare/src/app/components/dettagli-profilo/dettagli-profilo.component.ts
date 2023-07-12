@@ -15,6 +15,8 @@ export class DettagliProfiloComponent implements OnInit {
   users: any = {};
   competenze: any[] = [];
   titoli: any[] = [];
+  anni: any[] = [];
+
 
   constructor(private authSrv: AuthService, private firedatabase: AngularFireDatabase, private router: Router, private route: ActivatedRoute) { }
 
@@ -24,9 +26,11 @@ export class DettagliProfiloComponent implements OnInit {
       console.log(data);
       this.loadCompetenze();
       this.loadTitoli();
+      this.loadAnni()
     });
 
   }
+
   loadCompetenze(): void {
     this.firedatabase
       .list(`/users/${this.user?.uid}/competenze`)
@@ -44,6 +48,16 @@ export class DettagliProfiloComponent implements OnInit {
       this.titoli = titoli;
     });
   }
+
+  loadAnni():void{
+    this.firedatabase
+    .list(`/users/${this.user?.uid}/anni`)
+    .valueChanges()
+    .subscribe((anni: any) => {
+      this.anni = anni;
+    });
+  }
+
 
   vaiAggiungiSkills(){
     this.router.navigate(['/profilo-personale'], { queryParams: { competenzeAggiunte: 'true' } });
@@ -68,6 +82,10 @@ export class DettagliProfiloComponent implements OnInit {
  //AGGIUNGI MASTER
  aggiungiMaster(){
   this.router.navigate(['/aggiungi-titoli'], { queryParams: { competenzeAggiunte: 'true' } });
+}
+
+aggiungiAnni(){
+  this.router.navigate(['/anni-esperienza'], { queryParams: { competenzeAggiunte: 'true' } });
 }
 
 }

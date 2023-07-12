@@ -33,25 +33,28 @@
   <div class="form-box m-auto mb-4">
     <form class="form" (ngSubmit)="submit()" #competenzeForm="ngForm">
 
-      <h2 class="subtitle mb-3"><b>Aggiungi i titoli di studio</b></h2>
+      <h2 class="subtitle mb-3"><b>Anni di esperienza</b></h2>
 
       <div class="form-container">
-        <label for="titolo"><b>La tua formazione</b></label>
+
+        <label for="titolo"><b>Anni di esperienza</b></label>
+
         <input
           type="text"
           class="form-control mb-3"
           name="titolo"
-          placeholder="Aggiungi titolo di studio"
+          placeholder="Aggiungi anni di esperienza"
           required
-          [(ngModel)]="titoli.titolo"
+          [(ngModel)]="anni.anni"
           id="titolo"
         />
       </div>
-      <button type="submit" class="btn btn-aggiungi">Aggiungi titoli di studio</button>
+      <button type="submit" class="btn btn-aggiungi">Aggiungi anni di esperienza</button>
 
     </form>
   </div>
 </div>
+
 
 <hr style="border: 2px solid black; margin: 10px 12px">
 <!--TABELLA IN CUI VENGONO INSERITI I TASK----->
@@ -59,18 +62,30 @@
   <table class="table mb-4">
     <thead>
       <tr>
-        <th scope="col">Titoli</th>
+        <th scope="col">Anni di esperienza</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let titolo of users.titoli">
-        <td>{{titolo.titolo}}</td>
+      <tr *ngFor="let anno of users.anni">
+        <td class="d-flex justify-content-start button">
+        <ng-container *ngIf="modifica !== anno.key; else modificaSection">
+          {{ anno.anni }}
+         </ng-container>
+         <ng-template #modificaSection>
+           <input [(ngModel)]="anno.anni">
+           <button (click)="modificaCompetenza(anno.key, anno); modifica=null">Salva modifica</button>
+         </ng-template>
+
+          <button class="btn btn-success mb-1 mx-1 rounded-pill" (click)="modifica = anno.key" data-toggle="tooltip">Modifica</button>
+        </td>
       </tr>
+
     </tbody>
+
   </table>
 
 <!--BUTTON PER INVIARE I DATI-->
-<button [routerLink]="['/dettagli-profilo']" [queryParams]="{ titoli: users.titoli }" routerLinkActive="active" class="btn btn-aggiungi">Visualizza dettagli</button>
+<button [routerLink]="['/dettagli-profilo']" [queryParams]="{ anni: users.anni }" routerLinkActive="active" class="btn btn-aggiungi">Visualizza dettagli</button>
 </div>
 
 
@@ -78,4 +93,3 @@
   <p>Competenze aggiunte con successo!</p>
   <p>Verrai reindirizzato alla pagina di dettaglio del profilo.</p>
 </div>
-

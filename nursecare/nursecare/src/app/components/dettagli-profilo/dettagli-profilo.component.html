@@ -16,7 +16,7 @@
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" [routerLink]="['/dettagli-profilo']" routerLinkActive="active">VISUALIZZA DATI</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/profilo-personale']" routerLinkActive="active">AGGIUNGI COMPETENZE</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/profilo-personale']" routerLinkActive="active">AGGIUNGI ESPERIENZE LAVORATIVE</a></li>
           </ul>
         </li>
 
@@ -39,9 +39,6 @@
       <p>Data di nascita: <b>{{ user.dataNascita }} </b></p>
       <p>Indirizzo di residenza: <b> {{user.indirizzo}}</b>, <b>{{user.zipCode}}</b>, <b> {{user.citta}} </b>
       </p>
-
-
-
     </div>
 
     <div class="contatti">
@@ -54,7 +51,8 @@
       <h2>Profilo Professionale</h2>
       <p>Professione: <b>{{user.professione}}</b></p>
       <p>Numero di iscrizione all'albo: <b>{{user.nAlbo}}</b></p>
-      <p>Anni di esperienza: </p> <!--Aggiungere anni di esperienza, un form tipo-->
+      <p>Anni di esperienza: <span *ngFor="let anno of anni"><b>{{ anno.anni }}</b></span> </p>
+        <button class="btn btn-custom-join" type="submit" (click)="aggiungiAnni()">Aggiungi Titoli</button>
     </div>
 
 
