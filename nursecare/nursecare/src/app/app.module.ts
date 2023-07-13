@@ -36,7 +36,7 @@ import { AnniEsperienzaComponent } from './components/anni-esperienza/anni-esper
 
 
 const routes: Route[] = [
-  { path: '', redirectTo: 'register', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
       path: 'login',
       component: LoginComponent

@@ -12,21 +12,16 @@ import { ActivatedRoute } from '@angular/router';
 export class SearchComponent implements OnInit {
   searchValue!: string;
   user: any;
-  users: any = {};
-  competenze = {
-    titolo: '',
-    descrizione: '',
-    key: '',
-  };
-  constructor(private authSrv: AuthService, private firedatabase: AngularFireDatabase, private router: Router, private route: ActivatedRoute) { }
+  users: any[] = [];
 
-  ngOnInit(): void {
-    // this.authSrv.getUserData().subscribe(data => {
-    //   this.user = data;
-    //   console.log(data);
-    //   this.loadCompetenze();
-    // });
-  }
+  constructor(
+    private authSrv: AuthService,
+    private firedatabase: AngularFireDatabase,
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
+
+  ngOnInit(): void {}
 
   cerca(): void {
     this.users = [];
@@ -35,44 +30,80 @@ export class SearchComponent implements OnInit {
       .valueChanges()
       .subscribe((results: any[]) => {
         this.users = results.filter(user => {
-          // Confronta il valore di ricerca con i campi degli utenti
           for (const key in user) {
             if (user.hasOwnProperty(key) && typeof user[key] === 'string' && user[key].includes(this.searchValue)) {
-              console.log('Questo è lo zip code cercato',user[key]);
+              console.log('Questo è lo zip code cercato', user[key]);
               return true;
-
             }
           }
           return false;
         });
-      });
 
-      this.authSrv.getUserData().subscribe(data => {
-        this.user = data;
-        console.log(data);
         this.loadCompetenze();
+        this.loadTitoli();
+        this.loadAnniEsperienza();
       });
 
+    this.authSrv.getUserData().subscribe(data => {
+      this.user = data;
+      console.log(data);
+    });
   }
 
   loadCompetenze(): void {
-    this.firedatabase
-      .list(`/users/${this.user?.uid}/competenze`)
-      .valueChanges()
-      .subscribe((competenze: any) => {
-        this.users.competenze = competenze;
-      });
+    this.users.forEach((user: any, index: number) => {
+      const competenze = user.competenze;
+
+      const competenzeArray = [];
+      for (const competenzaId in competenze) {
+        if (competenze.hasOwnProperty(competenzaId)) {
+          const competenza = competenze[competenzaId];
+          competenza.key = competenzaId;
+          competenzeArray.push(competenza);
+        }
+      }
+
+      this.users[index].competenze = competenzeArray;
+    });
+  }
+
+  loadTitoli():void{
+    this.users.forEach((user: any, index: number) => {
+      const titoli = user.titoli;
+
+      const titoliArray = [];
+      for (const titoloId in titoli) {
+        if (titoli.hasOwnProperty(titoloId)) {
+          const titolo = titoli[titoloId];
+          titolo.key = titoloId;
+          titoliArray.push(titolo);
+        }
+      }
+
+      this.users[index].titoli = titoliArray;
+    });
+  }
+
+  loadAnniEsperienza():void{
+    this.users.forEach((user: any, index: number) => {
+      const anni = user.anni;
+
+      const anniArray = [];
+      for (const annoId in anni) {
+        if (anni.hasOwnProperty(annoId)) {
+          const anno = anni[annoId];
+          anno.key = annoId;
+          anniArray.push(anno);
+        }
+      }
+
+      this.users[index].anni = anniArray;
+    });
   }
 
   contatti(userId: number): void {
     this.router.navigate(['/profilo-cercato', userId]);
   }
 
-  // hasCompetenze(user: any): boolean {
-  //   return (
-  //     user.hasOwnProperty('competenze') &&
-  //     Array.isArray(user.competenze) &&
-  //     user.competenze.length > 0
-  //   );
-  // }
+
 }

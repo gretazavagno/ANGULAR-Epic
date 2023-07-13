@@ -10,28 +10,54 @@
     <thead>
       <tr>
         <th scope="col">Nome</th>
-        <th scope="col">Descrizione</th>
+        <th scope="col">Dati Infermiere</th>
+        <th scope="col">Titoli studio</th>
+        <th scope="col">Esperienze Lavorative</th>
+        <th scope="col">Anni esperienza</th>
         <th scope="col">Contatti</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let user of users">
         <td>
-          <div>{{ user.nome }} {{ user.cognome }}</div>
+          <div><b>{{ user.nome }} {{ user.cognome }} </b></div>
         </td>
         <td>
           <div>Indirizzo: {{ user.indirizzo }}</div>
-          <div>zipCode: {{ user.zipCode }}</div>
-          <div>Città: {{user.citta}}</div>
+          <div>zipCode: {{ user.citta }}</div>
+          <div>Città: {{user.zipCode}}</div>
           <div>Data di nascita: {{user.dataNascita}}</div>
           <div>Professione: {{user.professione}}</div>
-          <div>Numero di iscrizione all'albo: {{user.nAlbo}}</div>
+          <div>N° albo: {{user.nAlbo}}</div>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let titolo of user.titoli">
+              <div>{{ titolo.titolo }}</div>
+              <hr>
+
+            </li>
+          </ul>
+        </td>
+        <td>
+          <ul>
+            <li *ngFor="let competenza of user.competenze">
+              <div><b>Lavoro</b>: {{ competenza.titolo }}</div>
+              <div><b>Descrizione</b>: {{ competenza.descrizione }}</div>            <hr>
+
+            </li>
+          </ul>
+        </td>
+        <td>
+          <div *ngFor="let anno of user.anni">
+              <p>{{ anno.anni }}</p>
+            </div>
+
         </td>
         <td class="contatti">
-            <div>Email: {{user.email}}</div>
-            <div>Numero di cellulare: {{user.number}}</div>
+            <div><b>Email</b>: {{user.email}}</div>
+            <div><b>Cellulare</b>: {{user.number}}</div>
         </td>
-
       </tr>
     </tbody>
   </table>
